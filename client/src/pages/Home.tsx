@@ -336,7 +336,7 @@ const certificates: Certificate[] = [
     name: "Cyber Threat Management",
     issuer: "Cisco Networking Academy",
     description:
-      "Completed training in assessing and responding to cybersecurity threats.",
+      "Completed training in assessing and responding to cybersecurity threats offered by DICT.",
     skills: [
       "Disaster Recovery",
       "Incident Response",
@@ -355,7 +355,7 @@ const certificates: Certificate[] = [
     name: "IT Customer Support Basics",
     issuer: "Cisco Networking Academy",
     description:
-      "Completed foundational training for customer-focused technical support offered by DICT.",
+      "Completed foundational training for customer-focused technical support.",
     skills: ["Customer Service", "Communication", "Remote Troubleshooting"],
     verify:
       "https://www.credly.com/earner/earned/badge/c6ff76bc-37a0-4d03-a109-85a0fed3ca77",
