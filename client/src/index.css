@@ -101,3 +101,71 @@
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* Custom Text Selection Highlight */
+::selection {
+  background-color: #ea580c;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #ea580c;
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background-color: #fb923c;
+  color: #12100f;
+}
+
+.dark ::-moz-selection {
+  background-color: #fb923c;
+  color: #12100f;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #12100f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fdba74;
+  border-radius: 9999px;
+  border: 2px solid #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a3b34;
+  border-radius: 9999px;
+  border: 2px solid #12100f;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #fb923c;
+}
+
+/* Firefox scrollbar support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fdba74 #f1f5f9;
+}
+
+.dark * {
+  scrollbar-color: #4a3b34 #12100f;
+}
+
