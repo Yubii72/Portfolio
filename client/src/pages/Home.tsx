@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { toast } from "sonner";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import "./Home.css";
 
 type Project = {
@@ -979,89 +979,91 @@ export default function Home() {
               my notes.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            <AnimatePresence mode="popLayout">
-              {visibleProjects.map(project => (
-                <motion.article
-                  key={project.title}
-                  layout
-                  initial={{ opacity: 0, y: 25, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.3 }}
-                  className="group flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-[#3a302b] dark:bg-[#1c1816]"
-                >
-                  <ProjectVisual
-                    project={project}
-                    className="h-56 rounded-none border-0 border-b"
-                  />
-                  <div className="flex flex-1 flex-col p-6">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-slate-400">
-                        {project.number}
-                      </span>
-                    </div>
-                    <div className="mt-auto">
-                      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
-                        {project.type}
-                      </p>
-                      {project.date ? (
-                        <p className="mt-2 text-xs font-medium text-orange-600 dark:text-orange-400">
-                          {project.date}
-                        </p>
-                      ) : null}
-                      <h3 className="mt-2 text-2xl font-semibold tracking-tight">
-                        {project.title}
-                      </h3>
-                      <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
-                        {project.description}
-                      </p>
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {project.tags.map(tag => (
-                          <span
-                            key={tag}
-                            className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-600 dark:bg-[#29221f] dark:text-slate-300"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <button
-                        onClick={() => {
-                          setSelectedProject(project);
-                          setProjectSlide(0);
-                        }}
-                        className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 transition-colors hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
-                      >
-                        <span className="border-b border-transparent transition-colors group-hover:border-orange-500">
-                          View more
+          <LayoutGroup id="projects">
+            <motion.div layout transition={{ type: "spring", stiffness: 220, damping: 26 }} className="mt-10 grid gap-5 md:grid-cols-3">
+              <AnimatePresence>
+                {visibleProjects.map(project => (
+                  <motion.article
+                    key={project.title}
+                    layout
+                    initial={{ opacity: 0, y: 25, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.18 } }}
+                    whileHover={{ y: -6 }}
+                    transition={{ layout: { type: "spring", stiffness: 220, damping: 26 }, opacity: { duration: 0.25 } }}
+                    className="group flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-[#3a302b] dark:bg-[#1c1816]"
+                  >
+                    <ProjectVisual
+                      project={project}
+                      className="h-56 rounded-none border-0 border-b"
+                    />
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-semibold text-slate-400">
+                          {project.number}
                         </span>
-                        <ArrowRight
-                          size={15}
-                          className="transition-transform group-hover:translate-x-1"
-                        />
-                      </button>
+                      </div>
+                      <div className="mt-auto">
+                        <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                          {project.type}
+                        </p>
+                        {project.date ? (
+                          <p className="mt-2 text-xs font-medium text-orange-600 dark:text-orange-400">
+                            {project.date}
+                          </p>
+                        ) : null}
+                        <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                          {project.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                          {project.description}
+                        </p>
+                        <div className="mt-5 flex flex-wrap gap-2">
+                          {project.tags.map(tag => (
+                            <span
+                              key={tag}
+                              className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-600 dark:bg-[#29221f] dark:text-slate-300"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <button
+                          onClick={() => {
+                            setSelectedProject(project);
+                            setProjectSlide(0);
+                          }}
+                          className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 transition-colors hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
+                        >
+                          <span className="border-b border-transparent transition-colors group-hover:border-orange-500">
+                            View more
+                          </span>
+                          <ArrowRight
+                            size={15}
+                            className="transition-transform group-hover:translate-x-1"
+                          />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </motion.article>
-              ))}
-            </AnimatePresence>
-          </div>
-          <div className="mt-9 flex justify-center">
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setShowAllProjects(value => !value)}
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
-            >
-              {showAllProjects ? "View less" : "View all projects"}
-              <ArrowRight
-                size={15}
-                className={showAllProjects ? "rotate-[-90deg]" : "rotate-90"}
-              />
-            </motion.button>
-          </div>
+                  </motion.article>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+            <motion.div layout transition={{ type: "spring", stiffness: 220, damping: 26 }} className="mt-9 flex justify-center">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setShowAllProjects(value => !value)}
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
+              >
+                {showAllProjects ? "View less" : "View all projects"}
+                <ArrowRight
+                  size={15}
+                  className={showAllProjects ? "rotate-[-90deg]" : "rotate-90"}
+                />
+              </motion.button>
+            </motion.div>
+          </LayoutGroup>
         </motion.section>
 
         <motion.section
@@ -1129,53 +1131,56 @@ export default function Home() {
               A growing list of credentials and structured learning.
             </p>
           </div>
-          <div className="mt-10 space-y-2 border-y border-slate-200 py-2 dark:border-[#3a302b]">
-            <AnimatePresence mode="popLayout">
-              {visibleCertificates.map(certificate => (
-                <motion.button
-                  key={certificate.name}
-                  layout
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  whileHover={{ x: 6, transition: { duration: 0.2 } }}
-                  onClick={() => setSelectedCertificate(certificate)}
-                  className="mx-1 grid w-[calc(100%-0.5rem)] gap-3 rounded-xl border border-transparent px-4 py-5 text-left transition-colors hover:border-orange-200 hover:bg-orange-50/60 hover:shadow-sm dark:hover:border-orange-900 dark:hover:bg-orange-950/20 sm:grid-cols-[90px_1fr_auto] sm:items-center"
-                >
-                  <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
-                    {certificate.year}
-                  </span>
-                  <span>
-                    <span className="block text-lg font-semibold tracking-tight">
-                      {certificate.name}
+          <LayoutGroup id="certificates">
+            <motion.div layout transition={{ type: "spring", stiffness: 220, damping: 26 }} className="mt-10 space-y-2 border-y border-slate-200 py-2 dark:border-[#3a302b]">
+              <AnimatePresence>
+                {visibleCertificates.map(certificate => (
+                  <motion.button
+                    key={certificate.name}
+                    layout
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 15, transition: { duration: 0.18 } }}
+                    whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                    transition={{ layout: { type: "spring", stiffness: 220, damping: 26 }, opacity: { duration: 0.25 } }}
+                    onClick={() => setSelectedCertificate(certificate)}
+                    className="mx-1 grid w-[calc(100%-0.5rem)] gap-3 rounded-xl border border-transparent px-4 py-5 text-left transition-colors hover:border-orange-200 hover:bg-orange-50/60 hover:shadow-sm dark:hover:border-orange-900 dark:hover:bg-orange-950/20 sm:grid-cols-[90px_1fr_auto] sm:items-center"
+                  >
+                    <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
+                      {certificate.year}
                     </span>
-                    <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">
-                      {certificate.issuer}
+                    <span>
+                      <span className="block text-lg font-semibold tracking-tight">
+                        {certificate.name}
+                      </span>
+                      <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">
+                        {certificate.issuer}
+                      </span>
                     </span>
-                  </span>
-                  <span className="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
-                    View more <ArrowRight size={15} />
-                  </span>
-                </motion.button>
-              ))}
-            </AnimatePresence>
-          </div>
-          <div className="mt-9 flex justify-center">
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setShowAllCertificates(value => !value)}
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
-            >
-              {showAllCertificates ? "View less" : "View all certificates"}
-              <ArrowRight
-                size={15}
-                className={
-                  showAllCertificates ? "rotate-[-90deg]" : "rotate-90"
-                }
-              />
-            </motion.button>
-          </div>
+                    <span className="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+                      View more <ArrowRight size={15} />
+                    </span>
+                  </motion.button>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+            <motion.div layout transition={{ type: "spring", stiffness: 220, damping: 26 }} className="mt-9 flex justify-center">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => setShowAllCertificates(value => !value)}
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
+              >
+                {showAllCertificates ? "View less" : "View all certificates"}
+                <ArrowRight
+                  size={15}
+                  className={
+                    showAllCertificates ? "rotate-[-90deg]" : "rotate-90"
+                  }
+                />
+              </motion.button>
+            </motion.div>
+          </LayoutGroup>
         </motion.section>
 
         <motion.section
