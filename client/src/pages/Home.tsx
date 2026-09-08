@@ -19,6 +19,7 @@ import {
   Menu,
   Sparkles,
   Terminal,
+  Users,
   X,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
@@ -36,6 +37,7 @@ type Project = {
   color: string;
   icon: typeof Code2;
   repo?: string;
+  repoPrivate?: boolean;
   visual: string;
   slides: string[];
   images?: string[];
@@ -58,7 +60,7 @@ type Certificate = {
 
 const projects: Project[] = [
   {
-    number: "05",
+    number: "06",
     type: "Individual Project",
     title: "ITEW1 - Responsiveness",
     description:
@@ -93,7 +95,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "04",
+    number: "05",
     type: "Individual Project",
     title: "ITEW1 - UI Components",
     description:
@@ -126,14 +128,14 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "02",
+    number: "03",
     type: "Individual Project",
     title: "Student Attendance Tracker App",
     description:
       "An Android attendance tracker for managing classes, student lists, attendance records, and summaries.",
     details:
       "This Attendance Tracker App is built in Android Studio to help teachers manage class lists and student records. Teachers can mark students as present, absent, or late, then check attendance statistics and filter records by date.",
-    tags: ["Kotlin", "Android Studio"],
+    tags: ["Kotlin", "Jetpack Compose", "Room"],
     color: "#0f766e",
     icon: Check,
     repo: "https://github.com/Yubii72/Student-Attendance-Tracker-App/tree/main",
@@ -160,7 +162,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "03",
+    number: "04",
     type: "Individual Project",
     title: "JNP Car Rental",
     description:
@@ -209,13 +211,13 @@ const projects: Project[] = [
   },
   {
     number: "01",
-    type: "Group project (4 members)",
+    type: "Group project (5 Members)",
     title: "Smart Campus Companion App",
     description:
       "A mobile campus companion that brings school information, tasks, announcements, and student tools into one app.",
     details:
       "The Smart Campus Companion is a mobile application made for students and staff. It provides dashboards, task tracking, campus information, and real-time announcements. It also includes user profiles, admin controls, Firebase cloud sync, and background reminders.",
-    tags: ["Kotlin", "Jetpack Compose", "Room", "Firebase", "WorkManager"],
+    tags: ["Kotlin", "Jetpack Compose", "Room", "Firebase", "AndroidX Biometric"],
     color: "#0f766e",
     icon: Layers3,
     repo: "https://github.com/Yubii72/Smart-Campus-Companion-App",
@@ -253,6 +255,42 @@ const projects: Project[] = [
       "Built as a student group project",
       "Supports student and admin workflows",
       "Uses Kotlin, Firebase, and Jetpack Compose",
+    ],
+  },
+  {
+    number: "02",
+    type: "Group project (5 Members)",
+    title: "HanapAral App",
+    description:
+      "A mobile study companion that keeps students and staff connected through announcements, profiles, and real-time study groups.",
+    details:
+      "HanapAral is a modern Android mobile application designed to help students and staff stay informed, connected, and organized in campus life. It brings together important updates, user profiles, study groups, and real-time communication in one place, with Firebase authentication, cloud sync, and optional biometric login.",
+    tags: ["Kotlin", "Jetpack Compose", "Firebase", "AndroidX Biometric"],
+    color: "#7c3aed",
+    icon: Users,
+    repoPrivate: true,
+    visual: "HanapAral App",
+    slides: [
+      "Login page",
+      "My Groups",
+      "Discover",
+      "Group Info",
+      "Superuser Controls",
+      "Profile Page",
+    ],
+    images: [
+      "/asset/Projects/HanapAral%20App/login%20page.jpg",
+      "/asset/Projects/HanapAral%20App/my%20groups.jpg",
+      "/asset/Projects/HanapAral%20App/discover%20groups.jpg",
+      "/asset/Projects/HanapAral%20App/group%20info.jpg",
+      "/asset/Projects/HanapAral%20App/superuser%20control.jpg",
+      "/asset/Projects/HanapAral%20App/student%20profile.jpg",
+    ],
+    date: "Apr 3, 2026",
+    highlights: [
+      "Built as a group project (5 members)",
+      "Join or create study groups in real time",
+      "Firebase auth, cloud sync, and biometric login",
     ],
   },
 ];
@@ -581,20 +619,26 @@ function DetailModal({
         <div className="mt-6 text-sm leading-7 text-slate-600 dark:text-slate-300">
           {children}
         </div>
-        {actionHref && actionLabel ? (
+        {actionLabel ? (
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href={actionHref}
-              target="_blank"
-              rel="noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-lg border border-orange-600 px-4 py-3 text-sm font-medium text-orange-600 transition-colors hover:border-orange-700 hover:bg-orange-50 hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-orange-500 dark:text-orange-400 dark:hover:border-orange-400 dark:hover:bg-orange-900/30 dark:hover:text-orange-300"
-            >
-              {actionLabel}{" "}
-              <ExternalLink
-                size={15}
-                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
+            {actionHref ? (
+              <a
+                href={actionHref}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center justify-center gap-2 rounded-lg border border-orange-600 px-4 py-3 text-sm font-medium text-orange-600 transition-colors hover:border-orange-700 hover:bg-orange-50 hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-orange-500 dark:text-orange-400 dark:hover:border-orange-400 dark:hover:bg-orange-900/30 dark:hover:text-orange-300"
+              >
+                {actionLabel}{" "}
+                <ExternalLink
+                  size={15}
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-4 py-3 text-sm font-medium text-slate-500 dark:border-[#4a3b34] dark:text-slate-400">
+                {actionLabel}
+              </span>
+            )}
           </div>
         ) : null}
       </motion.div>
@@ -641,6 +685,7 @@ export default function Home() {
 
   const orderedProjects = [
     projects[4],
+    projects[5],
     projects[2],
     projects[3],
     projects[1],
@@ -1351,7 +1396,13 @@ export default function Home() {
             title={selectedProject.title}
             eyebrow={`${selectedProject.type} · ${selectedProject.date ?? `project ${selectedProject.number}`}`}
             onClose={() => setSelectedProject(null)}
-            actionLabel="Open repository"
+            actionLabel={
+              selectedProject.repo
+                ? "Open repository"
+                : selectedProject.repoPrivate
+                  ? "Private repo"
+                  : undefined
+            }
             actionHref={selectedProject.repo}
           >
             {selectedProject.images ? (
