@@ -1,6 +1,7 @@
 import {
   ArrowRight,
   ArrowUp,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   Award,
@@ -69,12 +70,12 @@ const projects: Project[] = [
     icon: Globe2,
     visual: "Responsive website",
     slides: [
-      "Desktop signup",
-      "Desktop layout",
-      "Desktop detail",
-      "Mobile layout",
-      "Mobile detail",
-      "Mobile signup",
+      "Desktop Signup Page",
+      "Desktop Dashboard",
+      "Desktop Dashboard",
+      "Mobile Dashboard",
+      "Mobile Dashboard",
+      "Mobile Signup Page",
     ],
     images: [
       "/asset/Projects/ITEW1%20-%20Responsiveness/DesktopSignUp.png",
@@ -103,7 +104,13 @@ const projects: Project[] = [
     color: "#b7791f",
     icon: Layers3,
     visual: "UI component collection",
-    slides: ["Component overview", "Component detail", "Component layout"],
+    slides: [
+      "Desktop Dashboard", 
+      "Desktop Dashboard", 
+      "Mobile Dashboard",
+      "Mobile Dashboard",
+      "Mobile Dashboard",
+    ],
     images: [
       "/asset/Projects/ITEW1%20-%20UI%20Components/Screenshot%202024-11-03%20045045.png",
       "/asset/Projects/ITEW1%20-%20UI%20Components/Screenshot%202024-11-03%20045101.png",
@@ -134,7 +141,7 @@ const projects: Project[] = [
     slides: [
       "Class list",
       "Class options",
-      "Students for class 1",
+      "Students list",
       "Mark attendance",
       "Attendance summary",
     ],
@@ -166,18 +173,18 @@ const projects: Project[] = [
     repo: "https://github.com/Yubii72/JNP-Car-Rental",
     visual: "JNP Car Rental",
     slides: [
-      "Project overview",
-      "Reservation workflow",
-      "Booking management",
-      "Guest dashboard",
-      "Staff dashboard",
-      "Manager dashboard",
-      "Vehicle management",
-      "Reservation details",
-      "Customer records",
-      "Rental management",
-      "Dashboard view",
-      "System interface",
+      "Sign In / Register Page",
+      "Login",
+      "Register",
+      "User Dashboard",
+      "Make Reservations",
+      "Contact Us",
+      "Manager / Staff Dashboard",
+      "Add New Car",
+      "Reservations",
+      "Rental Reports",
+      "Guest Messages",
+      "Analytics Dashboard",
     ],
     images: [
       "/asset/Projects/JNP%20Car%20Rental/Screenshot%202025-05-12%20134135.png",
@@ -214,18 +221,18 @@ const projects: Project[] = [
     repo: "https://github.com/Yubii72/Smart-Campus-Companion-App",
     visual: "Smart Campus Companion",
     slides: [
-      "Student dashboard",
-      "Student login",
-      "Task and schedule manager",
-      "Campus information",
-      "Student announcements",
-      "Student profile",
-      "Admin login",
-      "Admin dashboard",
-      "Admin announcements",
-      "Admin task manager",
-      "Admin settings",
-      "Create account",
+      "App Splash Screen",
+      "Student Login",
+      "Admin Login",
+      "Create Account",
+      "Student Dashboard",
+      "Task and Schedule Manager",
+      "Campus Information",
+      "Student Profile",
+      "Settings",
+      "Announcement Feed",
+      "Admin Dashboard",
+      "Admin Announcement Management",
     ],
     images: [
       "/asset/Projects/Smart%20Campus%20Companion%20App/0bccb050-eb5e-4251-b04b-f4a6ac12d638.jpg",
@@ -317,7 +324,7 @@ const certificates: Certificate[] = [
     name: "Introduction to Cybersecurity",
     issuer: "Cisco Networking Academy",
     description:
-      "Completed foundational cybersecurity training through Cisco Networking Academy.",
+      "Completed foundational cybersecurity training through Cisco Networking Academy offered by DICT.",
     skills: ["Cybersecurity", "Threat Detection"],
     verify:
       "https://www.credly.com/earner/earned/badge/ab4d5572-82bb-4002-96e9-e0ffb85edb7f",
@@ -348,7 +355,7 @@ const certificates: Certificate[] = [
     name: "IT Customer Support Basics",
     issuer: "Cisco Networking Academy",
     description:
-      "Completed foundational training for customer-focused technical support.",
+      "Completed foundational training for customer-focused technical support offered by DICT.",
     skills: ["Customer Service", "Communication", "Remote Troubleshooting"],
     verify:
       "https://www.credly.com/earner/earned/badge/c6ff76bc-37a0-4d03-a109-85a0fed3ca77",
@@ -580,9 +587,13 @@ function DetailModal({
               href={actionHref}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-orange-600 px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-orange-700"
+              className="group inline-flex items-center justify-center gap-2 rounded-lg border border-orange-600 px-4 py-3 text-sm font-medium text-orange-600 transition-colors hover:border-orange-700 hover:bg-orange-50 hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-orange-500 dark:text-orange-400 dark:hover:border-orange-400 dark:hover:bg-orange-900/30 dark:hover:text-orange-300"
             >
-              {actionLabel} <ExternalLink size={15} />
+              {actionLabel}{" "}
+              <ExternalLink
+                size={15}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
             </a>
           </div>
         ) : null}
@@ -595,17 +606,28 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [projectSlide, setProjectSlide] = useState(0);
-  const [selectedCertificate, setSelectedCertificate] =
-    useState<Certificate | null>(null);
+  const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showAllCertificates, setShowAllCertificates] = useState(false);
   const [showTop, setShowTop] = useState(false);
+  const [showHeroArrow, setShowHeroArrow] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => setShowTop(window.scrollY > 500);
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const hero = document.getElementById("home");
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowHeroArrow(entry.isIntersecting),
+      { threshold: 0.8 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   const navigate = (id: string) => {
@@ -737,7 +759,7 @@ export default function Home() {
 
         <section
           id="home"
-          className="flex min-h-[calc(100svh-65px)] items-center border-b border-slate-200 dark:border-[#3a302b]"
+          className="relative flex min-h-[calc(100svh-65px)] items-center border-b border-slate-200 dark:border-[#3a302b]"
         >
           <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-24">
             <motion.div
@@ -861,13 +883,34 @@ export default function Home() {
               <ProfileVisual className="h-96 w-full max-w-lg" />
             </motion.div>
           </div>
+          <AnimatePresence>
+            {showHeroArrow && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute bottom-5 left-1/2 -translate-x-1/2"
+              >
+                <motion.button
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                  onClick={() => navigate("about")}
+                  aria-label="Scroll down to about section"
+                  className="text-slate-400 transition-colors hover:text-orange-500 dark:text-slate-500 dark:hover:text-orange-400"
+                >
+                  <ChevronDown size={28} />
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </section>
 
         <motion.section
           id="about"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-b border-slate-200 dark:border-[#3a302b]"
         >
@@ -895,7 +938,7 @@ export default function Home() {
                   <li>Running crDroid 11.2 on a rooted Xiaomi phone with an unlocked bootloader.</li>
                   <li>Have flashed, broken, and reflashed my phone more times than I'd like to admit.</li>
                   <li>I keep a bootable Kali Linux USB around for troubleshooting and experimenting.</li>
-                  <li>I enjoy solving CTF rooms and figuring out how things work.</li>
+                  <li>I enjoy solving CTF rooms on TryHackMe and figuring out how things work.</li>
                   <li>I also play osu!, League of Legends, and Mobile Legends when I have nothing better to do.</li>
                 </ul>
               </div>
@@ -925,7 +968,7 @@ export default function Home() {
           id="education"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-b border-slate-200 dark:border-[#3a302b]"
         >
@@ -963,7 +1006,7 @@ export default function Home() {
           id="work"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="mx-auto max-w-6xl px-5 py-20 lg:px-8"
         >
@@ -975,8 +1018,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-6 text-slate-500 dark:text-slate-400">
-              A few class projects, experiments, and ideas that made it out of
-              my notes.
+              Some class projects, experiments, and other things I've worked on.
             </p>
           </div>
           <LayoutGroup id="projects">
@@ -1033,11 +1075,9 @@ export default function Home() {
                             setSelectedProject(project);
                             setProjectSlide(0);
                           }}
-                          className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 transition-colors hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
+                          className="group mt-6 inline-flex items-center gap-2 rounded-lg border border-transparent px-3 py-1.5 text-sm font-semibold text-orange-600 transition-colors hover:border-orange-600 hover:bg-orange-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 dark:text-orange-400 dark:hover:border-orange-400 dark:hover:bg-orange-900/30"
                         >
-                          <span className="border-b border-transparent transition-colors group-hover:border-orange-500">
-                            View more
-                          </span>
+                          <span>View more</span>
                           <ArrowRight
                             size={15}
                             className="transition-transform group-hover:translate-x-1"
@@ -1047,6 +1087,25 @@ export default function Home() {
                     </div>
                   </motion.article>
                 ))}
+              </AnimatePresence>
+              <AnimatePresence>
+                {showAllProjects && (
+                  <motion.article
+                    layout
+                    initial={{ opacity: 0, y: 25, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.18 } }}
+                    transition={{ layout: { type: "spring", stiffness: 220, damping: 26 }, opacity: { duration: 0.25 } }}
+                    className="flex min-h-[430px] flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center dark:border-[#4a3b34] dark:bg-[#1c1816]"
+                  >
+                    <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                      More projects in progress
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                      Currently building my next project. Check back soon to see what's new.
+                    </p>
+                  </motion.article>
+                )}
               </AnimatePresence>
             </motion.div>
             <motion.div layout transition={{ type: "spring", stiffness: 220, damping: 26 }} className="mt-9 flex justify-center">
@@ -1070,7 +1129,7 @@ export default function Home() {
           id="stack"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-y border-slate-200 dark:border-[#3a302b]"
         >
@@ -1082,9 +1141,8 @@ export default function Home() {
                   What I build with.
                 </h2>
               </div>
-              <p className="max-w-sm text-sm leading-6 text-slate-500 dark:text-slate-400">
-                The languages, platforms, and services shaping my coursework and
-                side projects.
+              <p className="max-w-sm text-sm leading-6 text-slate-500 dark:text-slate-400 sm:text-right">
+                The languages, tools, and technologies I use for coursework and personal projects.
               </p>
             </div>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -1116,7 +1174,7 @@ export default function Home() {
           id="certificates"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="mx-auto max-w-6xl px-5 py-20 lg:px-8"
         >
@@ -1187,7 +1245,7 @@ export default function Home() {
           id="contact"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-t border-slate-200 bg-slate-100 dark:border-[#3a302b] dark:bg-[#1c1816]/60"
         >
@@ -1316,7 +1374,12 @@ export default function Home() {
                 className="h-52"
               />
             )}
-            <div className="mt-4 flex items-center justify-between gap-3">
+            {selectedProject.slides[projectSlide] && (
+              <p className="mt-4 text-center text-sm font-semibold text-slate-600 dark:text-slate-300">
+                {selectedProject.slides[projectSlide]}
+              </p>
+            )}
+            <div className="relative mt-4 flex items-center justify-between gap-3">
               <button
                 onClick={() =>
                   setProjectSlide(
@@ -1332,7 +1395,7 @@ export default function Home() {
               >
                 <ChevronLeft size={15} /> Previous image
               </button>
-              <span className="text-xs font-medium text-slate-400">
+              <span className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-medium text-slate-400">
                 {projectSlide + 1} /{" "}
                 {(selectedProject.images ?? selectedProject.slides).length}
               </span>
