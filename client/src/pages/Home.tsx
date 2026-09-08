@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { toast } from "sonner";
+import { motion, AnimatePresence } from "framer-motion";
 import "./Home.css";
 
 type Project = {
@@ -534,13 +535,25 @@ function DetailModal({
   actionHref?: string;
 }) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
       className="fixed inset-0 z-[60] flex items-end justify-center bg-black/60 p-0 backdrop-blur-sm sm:items-center sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-label={title}
+      onClick={onClose}
     >
-      <div className="max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-t-2xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-[#4a3b34] dark:bg-[#1c1816] sm:rounded-2xl sm:p-8">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ type: "spring", stiffness: 350, damping: 25 }}
+        className="max-h-[92vh] w-full max-w-5xl overflow-y-auto rounded-t-2xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-[#4a3b34] dark:bg-[#1c1816] sm:rounded-2xl sm:p-8"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex items-start justify-between gap-5">
           <div>
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-orange-600 dark:text-orange-400">
@@ -573,8 +586,8 @@ function DetailModal({
             </a>
           </div>
         ) : null}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -670,48 +683,56 @@ export default function Home() {
               </button>
             </div>
           </div>
-          {menuOpen && (
-            <div className="border-t border-slate-200 bg-slate-50 px-5 py-4 dark:border-[#3a302b] dark:bg-[#12100f] md:hidden">
-              <div className="mx-auto flex max-w-6xl flex-col gap-3">
-                <button
-                  onClick={() => navigate("about")}
-                  className="py-2 text-left text-sm"
-                >
-                  About
-                </button>
-                <button
-                  onClick={() => navigate("education")}
-                  className="py-2 text-left text-sm"
-                >
-                  Education
-                </button>
-                <button
-                  onClick={() => navigate("work")}
-                  className="py-2 text-left text-sm"
-                >
-                  Projects
-                </button>
-                <button
-                  onClick={() => navigate("stack")}
-                  className="py-2 text-left text-sm"
-                >
-                  Stack
-                </button>
-                <button
-                  onClick={() => navigate("certificates")}
-                  className="py-2 text-left text-sm"
-                >
-                  Certificates
-                </button>
-                <button
-                  onClick={() => navigate("contact")}
-                  className="py-2 text-left text-sm"
-                >
-                  Contact
-                </button>
-              </div>
-            </div>
-          )}
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="overflow-hidden border-t border-slate-200 bg-slate-50 px-5 py-4 dark:border-[#3a302b] dark:bg-[#12100f] md:hidden"
+              >
+                <div className="mx-auto flex max-w-6xl flex-col gap-3">
+                  <button
+                    onClick={() => navigate("about")}
+                    className="py-2 text-left text-sm"
+                  >
+                    About
+                  </button>
+                  <button
+                    onClick={() => navigate("education")}
+                    className="py-2 text-left text-sm"
+                  >
+                    Education
+                  </button>
+                  <button
+                    onClick={() => navigate("work")}
+                    className="py-2 text-left text-sm"
+                  >
+                    Projects
+                  </button>
+                  <button
+                    onClick={() => navigate("stack")}
+                    className="py-2 text-left text-sm"
+                  >
+                    Stack
+                  </button>
+                  <button
+                    onClick={() => navigate("certificates")}
+                    className="py-2 text-left text-sm"
+                  >
+                    Certificates
+                  </button>
+                  <button
+                    onClick={() => navigate("contact")}
+                    className="py-2 text-left text-sm"
+                  >
+                    Contact
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </nav>
 
         <section
@@ -719,7 +740,12 @@ export default function Home() {
           className="flex min-h-[calc(100svh-65px)] items-center border-b border-slate-200 dark:border-[#3a302b]"
         >
           <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-24">
-            <div className="hero-copy">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="hero-copy"
+            >
               <div className="mb-8 flex justify-center lg:hidden">
                 <ProfileVisual className="h-52 w-52" />
               </div>
@@ -733,18 +759,22 @@ export default function Home() {
                 software development, and always looking for the next thing to learn.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => navigate("work")}
                   className="inline-flex items-center gap-2 rounded-lg bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
                 >
                   View my projects <ArrowRight size={16} />
-                </button>
-                <button
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => navigate("contact")}
                   className="rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-300 hover:bg-orange-50 hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-700 dark:hover:bg-[#29221f] dark:hover:text-orange-300"
                 >
                   Get in touch
-                </button>
+                </motion.button>
               </div>
               <div className="mt-10 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-5 border-t border-slate-200 pt-6 dark:border-[#3a302b] sm:grid-cols-4">
                 <div>
@@ -780,48 +810,65 @@ export default function Home() {
                 <span className="mr-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
                   Socials
                 </span>
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   href="https://www.linkedin.com/in/kurt-xander-francois-imperial-8a3b2542a/"
                   target="_blank"
                   rel="noreferrer"
                   className="social-chip"
                 >
                   <Linkedin size={14} /> LinkedIn
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   href="https://www.facebook.com/xander.imperial.3/"
                   target="_blank"
                   rel="noreferrer"
                   className="social-chip"
                 >
                   <Facebook size={14} /> Facebook
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   href="https://www.instagram.com/kx.imp/"
                   target="_blank"
                   rel="noreferrer"
                   className="social-chip"
                 >
                   <Instagram size={14} /> Instagram
-                </a>
-                <a
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   href="https://github.com/Yubii72"
                   target="_blank"
                   rel="noreferrer"
                   className="social-chip"
                 >
                   <Github size={14} /> GitHub
-                </a>
+                </motion.a>
               </div>
-            </div>
-            <div className="hidden justify-end lg:flex">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              className="hidden justify-end lg:flex"
+            >
               <ProfileVisual className="h-96 w-full max-w-lg" />
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        <section
+        <motion.section
           id="about"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-b border-slate-200 dark:border-[#3a302b]"
         >
           <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-[0.7fr_1.3fr] lg:px-8">
@@ -858,18 +905,28 @@ export default function Home() {
                   Current interests
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="interest-tag">Cybersecurity</span>
-                  <span className="interest-tag">Frontend</span>
-                  <span className="interest-tag">Backend</span>
-                  <span className="interest-tag">CTF</span>
-                  {/* <span className="interest-tag">Problem solving</span> */}
+                  {["Cybersecurity", "Frontend", "Backend", "CTF"].map(interest => (
+                    <motion.span
+                      key={interest}
+                      whileHover={{ scale: 1.08, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="interest-tag cursor-default"
+                    >
+                      {interest}
+                    </motion.span>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <section
+        </motion.section>
+
+        <motion.section
           id="education"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-b border-slate-200 dark:border-[#3a302b]"
         >
           <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-[0.7fr_1.3fr] lg:px-8">
@@ -879,44 +936,37 @@ export default function Home() {
                 Academic history.
               </h2>
             </div>
-              <div className="education-list">
-                <div className="education-row">
-                  <span className="education-year">2023 — present</span>
+            <div className="education-list">
+              {[
+                { year: "2023 — present", title: "Pamantasan ng Cabuyao", desc: "BS Information Technology" },
+                { year: "2021 — 2023", title: "IFL Christian Academy, Inc.", desc: "STEM · Senior High School" },
+                { year: "2016 — 2021", title: "Holy Redeemer School of San Isidro", desc: "Junior High School" },
+              ].map(item => (
+                <motion.div
+                  key={item.title}
+                  whileHover={{ x: 6 }}
+                  transition={{ duration: 0.2 }}
+                  className="education-row cursor-default"
+                >
+                  <span className="education-year">{item.year}</span>
                   <div>
-                    <h3 className="text-lg font-semibold">
-                      Pamantasan ng Cabuyao
-                    </h3>
-                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                      BS Information Technology
-                    </p>
+                    <h3 className="text-lg font-semibold">{item.title}</h3>
+                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{item.desc}</p>
                   </div>
-                </div>
-                <div className="education-row">
-                  <span className="education-year">2021 — 2023</span>
-                  <div>
-                    <h3 className="text-lg font-semibold">
-                      IFL Christian Academy, Inc.
-                    </h3>
-                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                      STEM · Senior High School
-                    </p>
-                  </div>
-                </div>
-                <div className="education-row">
-                  <span className="education-year">2016 — 2021</span>
-                  <div>
-                    <h3 className="text-lg font-semibold">
-                      Holy Redeemer School of San Isidro
-                    </h3>
-                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                      Junior High School
-                    </p>
-                  </div>
-                </div>
-              </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </section>
-        <section id="work" className="mx-auto max-w-6xl px-5 py-20 lg:px-8">
+        </motion.section>
+
+        <motion.section
+          id="work"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="mx-auto max-w-6xl px-5 py-20 lg:px-8"
+        >
           <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
             <div>
               <SectionLabel>Selected work</SectionLabel>
@@ -930,68 +980,78 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {visibleProjects.map(project => (
-              <article
-                key={project.title}
-                className="group flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md dark:border-[#3a302b] dark:bg-[#1c1816]"
-              >
-                <ProjectVisual
-                  project={project}
-                  className="h-56 rounded-none border-0 border-b"
-                />
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold text-slate-400">
-                      {project.number}
-                    </span>
-                  </div>
-                  <div className="mt-auto">
-                    <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
-                      {project.type}
-                    </p>
-                    {project.date ? (
-                      <p className="mt-2 text-xs font-medium text-orange-600 dark:text-orange-400">
-                        {project.date}
-                      </p>
-                    ) : null}
-                    <h3 className="mt-2 text-2xl font-semibold tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
-                      {project.description}
-                    </p>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {project.tags.map(tag => (
-                        <span
-                          key={tag}
-                          className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-600 dark:bg-[#29221f] dark:text-slate-300"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <button
-                      onClick={() => {
-                        setSelectedProject(project);
-                        setProjectSlide(0);
-                      }}
-                      className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 transition-colors hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
-                    >
-                      <span className="border-b border-transparent transition-colors group-hover:border-orange-500">
-                        View more
+            <AnimatePresence mode="popLayout">
+              {visibleProjects.map(project => (
+                <motion.article
+                  key={project.title}
+                  layout
+                  initial={{ opacity: 0, y: 25, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.3 }}
+                  className="group flex min-h-[430px] flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-[#3a302b] dark:bg-[#1c1816]"
+                >
+                  <ProjectVisual
+                    project={project}
+                    className="h-56 rounded-none border-0 border-b"
+                  />
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold text-slate-400">
+                        {project.number}
                       </span>
-                      <ArrowRight
-                        size={15}
-                        className="transition-transform group-hover:translate-x-1"
-                      />
-                    </button>
+                    </div>
+                    <div className="mt-auto">
+                      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                        {project.type}
+                      </p>
+                      {project.date ? (
+                        <p className="mt-2 text-xs font-medium text-orange-600 dark:text-orange-400">
+                          {project.date}
+                        </p>
+                      ) : null}
+                      <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                        {project.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-slate-400">
+                        {project.description}
+                      </p>
+                      <div className="mt-5 flex flex-wrap gap-2">
+                        {project.tags.map(tag => (
+                          <span
+                            key={tag}
+                            className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-600 dark:bg-[#29221f] dark:text-slate-300"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <button
+                        onClick={() => {
+                          setSelectedProject(project);
+                          setProjectSlide(0);
+                        }}
+                        className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-orange-600 transition-colors hover:text-orange-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500 dark:text-orange-400 dark:hover:text-orange-300"
+                      >
+                        <span className="border-b border-transparent transition-colors group-hover:border-orange-500">
+                          View more
+                        </span>
+                        <ArrowRight
+                          size={15}
+                          className="transition-transform group-hover:translate-x-1"
+                        />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </motion.article>
+              ))}
+            </AnimatePresence>
           </div>
           <div className="mt-9 flex justify-center">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => setShowAllProjects(value => !value)}
               className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
             >
@@ -1000,12 +1060,16 @@ export default function Home() {
                 size={15}
                 className={showAllProjects ? "rotate-[-90deg]" : "rotate-90"}
               />
-            </button>
+            </motion.button>
           </div>
-        </section>
+        </motion.section>
 
-        <section
+        <motion.section
           id="stack"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-y border-slate-200 dark:border-[#3a302b]"
         >
           <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8">
@@ -1023,23 +1087,35 @@ export default function Home() {
             </div>
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {technologies.map(({ label, detail }) => (
-                <div key={label} className="tech-group">
+                <motion.div
+                  key={label}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="tech-group"
+                >
                   <span className="text-sm font-semibold">{label}</span>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {detail.split(" · ").map(tool => (
-                      <span key={tool} className="tool-chip">
+                      <motion.span
+                        key={tool}
+                        whileHover={{ scale: 1.05 }}
+                        className="tool-chip"
+                      >
                         {tool}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section
+        <motion.section
           id="certificates"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="mx-auto max-w-6xl px-5 py-20 lg:px-8"
         >
           <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
@@ -1054,31 +1130,40 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-10 space-y-2 border-y border-slate-200 py-2 dark:border-[#3a302b]">
-            {visibleCertificates.map(certificate => (
-              <button
-                key={certificate.name}
-                onClick={() => setSelectedCertificate(certificate)}
-                className="mx-1 grid w-[calc(100%-0.5rem)] gap-3 rounded-xl border border-transparent px-4 py-5 text-left transition-all hover:-translate-y-0.5 hover:border-orange-200 hover:bg-orange-50/60 hover:shadow-sm dark:hover:border-orange-900 dark:hover:bg-orange-950/20 sm:grid-cols-[90px_1fr_auto] sm:items-center"
-              >
-                <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
-                  {certificate.year}
-                </span>
-                <span>
-                  <span className="block text-lg font-semibold tracking-tight">
-                    {certificate.name}
+            <AnimatePresence mode="popLayout">
+              {visibleCertificates.map(certificate => (
+                <motion.button
+                  key={certificate.name}
+                  layout
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 15 }}
+                  whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                  onClick={() => setSelectedCertificate(certificate)}
+                  className="mx-1 grid w-[calc(100%-0.5rem)] gap-3 rounded-xl border border-transparent px-4 py-5 text-left transition-colors hover:border-orange-200 hover:bg-orange-50/60 hover:shadow-sm dark:hover:border-orange-900 dark:hover:bg-orange-950/20 sm:grid-cols-[90px_1fr_auto] sm:items-center"
+                >
+                  <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">
+                    {certificate.year}
                   </span>
-                  <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">
-                    {certificate.issuer}
+                  <span>
+                    <span className="block text-lg font-semibold tracking-tight">
+                      {certificate.name}
+                    </span>
+                    <span className="mt-1 block text-sm text-slate-500 dark:text-slate-400">
+                      {certificate.issuer}
+                    </span>
                   </span>
-                </span>
-                <span className="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
-                  View more <ArrowRight size={15} />
-                </span>
-              </button>
-            ))}
+                  <span className="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
+                    View more <ArrowRight size={15} />
+                  </span>
+                </motion.button>
+              ))}
+            </AnimatePresence>
           </div>
           <div className="mt-9 flex justify-center">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => setShowAllCertificates(value => !value)}
               className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
             >
@@ -1089,12 +1174,16 @@ export default function Home() {
                   showAllCertificates ? "rotate-[-90deg]" : "rotate-90"
                 }
               />
-            </button>
+            </motion.button>
           </div>
-        </section>
+        </motion.section>
 
-        <section
+        <motion.section
           id="contact"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-t border-slate-200 bg-slate-100 dark:border-[#3a302b] dark:bg-[#1c1816]/60"
         >
           <div className="mx-auto flex max-w-6xl flex-col justify-between gap-8 px-5 py-20 sm:flex-row sm:items-center lg:px-8 text-center sm:text-left">
@@ -1108,14 +1197,16 @@ export default function Home() {
                 technology.
               </p>
             </div>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="mailto:imperialkurtxander@gmail.com"
               className="mx-auto inline-flex w-fit items-center gap-2 rounded-lg bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
             >
               Say hello <Mail size={16} />
-            </a>
+            </motion.a>
           </div>
-        </section>
+        </motion.section>
 
         <footer className="border-t border-slate-200 dark:border-[#3a302b]">
           <div className="mx-auto flex max-w-6xl flex-col justify-between gap-5 px-5 py-7 sm:flex-row sm:items-center lg:px-8">
@@ -1173,121 +1264,135 @@ export default function Home() {
             Made with TypeScript, React, HTML, and CSS.
           </p>
         </footer>
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          aria-label="Back to top"
-          className={`back-to-top ${showTop ? "back-to-top-visible" : ""}`}
-        >
-          <ArrowUp size={18} />
-        </button>
+        <AnimatePresence>
+          {showTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 10 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              aria-label="Back to top"
+              className="back-to-top back-to-top-visible"
+            >
+              <ArrowUp size={18} />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
 
-      {selectedProject && (
-        <DetailModal
-          title={selectedProject.title}
-          eyebrow={`${selectedProject.type} · ${selectedProject.date ?? `project ${selectedProject.number}`}`}
-          onClose={() => setSelectedProject(null)}
-          actionLabel="Open repository"
-          actionHref={selectedProject.repo}
-        >
-          {selectedProject.images ? (
-            <a
-              href={selectedProject.images[projectSlide]}
-              target="_blank"
-              rel="noreferrer"
-              className="project-preview-link"
-              aria-label={`Open ${selectedProject.slides[projectSlide]} at full size`}
-            >
-              <img
-                src={selectedProject.images[projectSlide]}
-                alt={`${selectedProject.visual} · ${selectedProject.slides[projectSlide]}`}
-                className="project-modal-visual h-[68vh]"
-              />
-            </a>
-          ) : (
-            <VisualPlaceholder
-              label={`${selectedProject.visual} · ${selectedProject.slides[projectSlide]}`}
-              className="h-52"
-            />
-          )}
-          <div className="mt-4 flex items-center justify-between gap-3">
-            <button
-              onClick={() =>
-                setProjectSlide(
-                  slide =>
-                    (slide -
-                      1 +
-                      (selectedProject.images ?? selectedProject.slides)
-                        .length) %
-                    (selectedProject.images ?? selectedProject.slides).length
-                )
-              }
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold transition-colors hover:border-orange-300 hover:text-orange-600 dark:border-[#4a3b34] dark:hover:border-orange-700 dark:hover:text-orange-400"
-            >
-              <ChevronLeft size={15} /> Previous image
-            </button>
-            <span className="text-xs font-medium text-slate-400">
-              {projectSlide + 1} /{" "}
-              {(selectedProject.images ?? selectedProject.slides).length}
-            </span>
-            <button
-              onClick={() =>
-                setProjectSlide(
-                  slide =>
-                    (slide + 1) %
-                    (selectedProject.images ?? selectedProject.slides).length
-                )
-              }
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold transition-colors hover:border-orange-300 hover:text-orange-600 dark:border-[#4a3b34] dark:hover:border-orange-700 dark:hover:text-orange-400"
-            >
-              Next image <ChevronRight size={15} />
-            </button>
-          </div>
-          <p className="mt-6">{selectedProject.details}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {selectedProject.tags.map(tag => (
-              <span
-                key={tag}
-                className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-600 dark:bg-[#29221f] dark:text-slate-300"
+      <AnimatePresence>
+        {selectedProject && (
+          <DetailModal
+            title={selectedProject.title}
+            eyebrow={`${selectedProject.type} · ${selectedProject.date ?? `project ${selectedProject.number}`}`}
+            onClose={() => setSelectedProject(null)}
+            actionLabel="Open repository"
+            actionHref={selectedProject.repo}
+          >
+            {selectedProject.images ? (
+              <a
+                href={selectedProject.images[projectSlide]}
+                target="_blank"
+                rel="noreferrer"
+                className="project-preview-link"
+                aria-label={`Open ${selectedProject.slides[projectSlide]} at full size`}
               >
-                {tag}
+                <img
+                  src={selectedProject.images[projectSlide]}
+                  alt={`${selectedProject.visual} · ${selectedProject.slides[projectSlide]}`}
+                  className="project-modal-visual h-[68vh]"
+                />
+              </a>
+            ) : (
+              <VisualPlaceholder
+                label={`${selectedProject.visual} · ${selectedProject.slides[projectSlide]}`}
+                className="h-52"
+              />
+            )}
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <button
+                onClick={() =>
+                  setProjectSlide(
+                    slide =>
+                      (slide -
+                        1 +
+                        (selectedProject.images ?? selectedProject.slides)
+                          .length) %
+                      (selectedProject.images ?? selectedProject.slides).length
+                  )
+                }
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold transition-colors hover:border-orange-300 hover:text-orange-600 dark:border-[#4a3b34] dark:hover:border-orange-700 dark:hover:text-orange-400"
+              >
+                <ChevronLeft size={15} /> Previous image
+              </button>
+              <span className="text-xs font-medium text-slate-400">
+                {projectSlide + 1} /{" "}
+                {(selectedProject.images ?? selectedProject.slides).length}
               </span>
-            ))}
-          </div>
-          <ul className="mt-5 list-disc space-y-2 pl-5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-            {(
-              selectedProject.highlights ?? ["Built as a learning project"]
-            ).map(highlight => (
-              <li key={highlight}>{highlight}</li>
-            ))}
-          </ul>
-        </DetailModal>
-      )}
-      {selectedCertificate && (
-        <DetailModal
-          title={selectedCertificate.name}
-          eyebrow={`${selectedCertificate.issuer} · ${selectedCertificate.year}`}
-          onClose={() => setSelectedCertificate(null)}
-          actionLabel="Verify certificate"
-          actionHref={selectedCertificate.verify}
-        >
-          <CertificateVisual
-            certificate={selectedCertificate}
-            className="h-[50vh]"
-          />
-          <p className="mt-6">{selectedCertificate.description}</p>
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-orange-600 dark:text-orange-400">
-            Skills
-          </p>
-          <ul className="mt-5 list-disc space-y-2 pl-5 marker:text-orange-600 dark:marker:text-orange-400">
-            {selectedCertificate.skills.map(skill => (
-              <li key={skill} className="text-sm font-medium">
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </DetailModal>
-      )}
+              <button
+                onClick={() =>
+                  setProjectSlide(
+                    slide =>
+                      (slide + 1) %
+                      (selectedProject.images ?? selectedProject.slides).length
+                  )
+                }
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold transition-colors hover:border-orange-300 hover:text-orange-600 dark:border-[#4a3b34] dark:hover:border-orange-700 dark:hover:text-orange-400"
+              >
+                Next image <ChevronRight size={15} />
+              </button>
+            </div>
+            <p className="mt-6">{selectedProject.details}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {selectedProject.tags.map(tag => (
+                <span
+                  key={tag}
+                  className="rounded-md bg-slate-100 px-2.5 py-1 text-xs text-slate-600 dark:bg-[#29221f] dark:text-slate-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <ul className="mt-5 list-disc space-y-2 pl-5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+              {(
+                selectedProject.highlights ?? ["Built as a learning project"]
+              ).map(highlight => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+          </DetailModal>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {selectedCertificate && (
+          <DetailModal
+            title={selectedCertificate.name}
+            eyebrow={`${selectedCertificate.issuer} · ${selectedCertificate.year}`}
+            onClose={() => setSelectedCertificate(null)}
+            actionLabel="Verify certificate"
+            actionHref={selectedCertificate.verify}
+          >
+            <CertificateVisual
+              certificate={selectedCertificate}
+              className="h-[50vh]"
+            />
+            <p className="mt-6">{selectedCertificate.description}</p>
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-orange-600 dark:text-orange-400">
+              Skills
+            </p>
+            <ul className="mt-5 list-disc space-y-2 pl-5 marker:text-orange-600 dark:marker:text-orange-400">
+              {selectedCertificate.skills.map(skill => (
+                <li key={skill} className="text-sm font-medium">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </DetailModal>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
