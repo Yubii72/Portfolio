@@ -125,7 +125,7 @@ const projects: Project[] = [
     description:
       "An Android attendance tracker for managing classes, student lists, attendance records, and summaries.",
     details:
-      "This Kotlin app was built in Android Studio to help teachers manage class lists, review student records, mark individual attendance as present, absent, or late, and view attendance statistics with date filtering.",
+      "This Attendance Tracker App is built in Android Studio to help teachers manage class lists and student records. Teachers can mark students as present, absent, or late, then check attendance statistics and filter records by date.",
     tags: ["Kotlin", "Android Studio"],
     color: "#0f766e",
     icon: Check,
@@ -159,7 +159,7 @@ const projects: Project[] = [
     description:
       "A full-stack car rental reservation system for a fictional Laguna-based company.",
     details:
-      "JNP Car Rental includes reservation and booking workflows with role-based dashboards for guests, staff, and managers. It was built with PHP and MySQL, using XAMPP with Apache and MySQL for the development environment.",
+      "JNP Car Rental is a web application for managing car reservations and bookings. It has separate dashboards for guests, staff, and managers, with features based on their roles. The project uses PHP and MySQL with XAMPP for development.",
     tags: ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "XAMPP"],
     color: "#b45309",
     icon: Globe2,
@@ -207,7 +207,7 @@ const projects: Project[] = [
     description:
       "A mobile campus companion that brings school information, tasks, announcements, and student tools into one app.",
     details:
-      "The Smart Campus Companion was created as a student mobile application for students and staff. It includes dashboards, task tracking, campus information, real-time announcements, user profiles, admin controls, Firebase cloud sync, and background reminders.",
+      "The Smart Campus Companion is a mobile application made for students and staff. It provides dashboards, task tracking, campus information, and real-time announcements. It also includes user profiles, admin controls, Firebase cloud sync, and background reminders.",
     tags: ["Kotlin", "Jetpack Compose", "Room", "Firebase", "WorkManager"],
     color: "#0f766e",
     icon: Layers3,
