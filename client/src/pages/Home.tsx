@@ -462,8 +462,15 @@ const certificates: Certificate[] = [
   },
 ];
 
+const NAV_OFFSET = 80;
+
 function scrollToId(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const el = document.getElementById(id);
+  if (!el) return;
+  window.scrollTo({
+    top: Math.max(el.offsetTop - NAV_OFFSET, 0),
+    behavior: "smooth",
+  });
 }
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -753,50 +760,63 @@ export default function Home() {
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.25, ease: "easeInOut" }}
-                className="overflow-hidden border-t border-slate-200 bg-slate-50 px-5 py-4 dark:border-[#3a302b] dark:bg-[#12100f] md:hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="fixed inset-0 top-16 z-40 md:hidden"
               >
-                <div className="mx-auto flex max-w-6xl flex-col gap-3">
-                  <button
-                    onClick={() => navigate("about")}
-                    className="py-2 text-left text-sm"
-                  >
-                    About
-                  </button>
-                  <button
-                    onClick={() => navigate("education")}
-                    className="py-2 text-left text-sm"
-                  >
-                    Education
-                  </button>
-                  <button
-                    onClick={() => navigate("work")}
-                    className="py-2 text-left text-sm"
-                  >
-                    Projects
-                  </button>
-                  <button
-                    onClick={() => navigate("stack")}
-                    className="py-2 text-left text-sm"
-                  >
-                    Stack
-                  </button>
-                  <button
-                    onClick={() => navigate("certificates")}
-                    className="py-2 text-left text-sm"
-                  >
-                    Certificates
-                  </button>
-                  <button
-                    onClick={() => navigate("contact")}
-                    className="py-2 text-left text-sm"
-                  >
-                    Contact
-                  </button>
-                </div>
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  aria-label="Close menu"
+                  className="absolute inset-0 h-full w-full bg-slate-950/40 backdrop-blur-[2px]"
+                />
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="relative border-b border-slate-200 bg-slate-50 px-5 py-4 shadow-lg dark:border-[#3a302b] dark:bg-[#12100f]"
+                >
+                  <div className="mx-auto flex max-w-6xl flex-col gap-3">
+                    <button
+                      onClick={() => navigate("about")}
+                      className="py-2 text-left text-sm"
+                    >
+                      About
+                    </button>
+                    <button
+                      onClick={() => navigate("education")}
+                      className="py-2 text-left text-sm"
+                    >
+                      Education
+                    </button>
+                    <button
+                      onClick={() => navigate("work")}
+                      className="py-2 text-left text-sm"
+                    >
+                      Projects
+                    </button>
+                    <button
+                      onClick={() => navigate("stack")}
+                      className="py-2 text-left text-sm"
+                    >
+                      Stack
+                    </button>
+                    <button
+                      onClick={() => navigate("certificates")}
+                      className="py-2 text-left text-sm"
+                    >
+                      Certificates
+                    </button>
+                    <button
+                      onClick={() => navigate("contact")}
+                      className="py-2 text-left text-sm"
+                    >
+                      Contact
+                    </button>
+                  </div>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
