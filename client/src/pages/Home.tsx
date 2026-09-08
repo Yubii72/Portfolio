@@ -849,7 +849,7 @@ export default function Home() {
                   <li>Have flashed, broken, and reflashed my phone more times than I'd like to admit.</li>
                   <li>I keep a bootable Kali Linux USB around for troubleshooting and experimenting.</li>
                   <li>My usual debugging strategy: break it, figure out why, then fix it.</li>
-                  <li>I also play Osu!, League of Legends, and Mobile Legends when I have nothing better to do.</li>
+                  <li>I also play osu!, League of Legends, and Mobile Legends when I have nothing better to do.</li>
                 </ul>
               </div>
 
