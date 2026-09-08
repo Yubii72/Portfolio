@@ -260,7 +260,7 @@ const projects: Project[] = [
 const technologies = [
   {
     label: "Frontend Development",
-    detail: "HTML5 · CSS3 · JavaScript · TypeScript · React",
+    detail: "HTML5 · CSS3 · Tailwind CSS · JavaScript · TypeScript · React",
     icon: Code2,
   },
   {
