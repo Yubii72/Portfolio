@@ -1001,7 +1001,7 @@ export default function Home() {
                 <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[15px] text-slate-600 dark:text-slate-300 marker:text-orange-600 dark:marker:text-orange-400">
                   <li>Daily driving Fedora Linux and Windows 11 in a dual-boot setup.</li>
                   <li>Running crDroid 11.2 on a rooted Xiaomi phone with an unlocked bootloader.</li>
-                  <li>Have flashed, broken, and reflashed my phone more times than I'd like to admit.</li>
+                  <li>Messing around with systems, networks, and vulnerabilities.</li>
                   <li>I keep a bootable Kali Linux USB around for troubleshooting and experimenting.</li>
                   <li>I enjoy solving CTF rooms on TryHackMe and figuring out how things work.</li>
                   <li>I also play osu!, League of Legends, and Mobile Legends when I have nothing better to do.</li>
