@@ -1013,7 +1013,7 @@ export default function Home() {
                   Current interests
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {["Cybersecurity", "Frontend", "Backend", "CTF"].map(interest => (
+                  {["Web Development", "Cybersecurity", "CTF", "OSINT"].map(interest => (
                     <motion.span
                       key={interest}
                       whileHover={{ scale: 1.08, y: -2 }}
