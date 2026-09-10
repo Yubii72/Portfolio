@@ -1244,7 +1244,7 @@ export default function Home() {
                   What I build with.
                 </h2>
               </div>
-              <p className="max-w-sm text-sm leading-6 text-slate-500 dark:text-slate-400 sm:text-right">
+<p className="max-w-sm text-sm leading-6 text-slate-500 dark:text-slate-400">
                 The languages, tools, and technologies I use for coursework and personal projects.
               </p>
             </div>
