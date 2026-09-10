@@ -862,8 +862,7 @@ export default function Home() {
                 <span className="text-orange-600 dark:text-orange-400">.</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                Information technology student interested in pretty much everything related to technology, 
-                software development, and always looking for the next thing to learn.
+                An IT student building web and mobile apps, with cybersecurity as the newest thing I'm into.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <motion.button
@@ -1008,10 +1007,8 @@ export default function Home() {
             </div>
             <div>
               <p className="max-w-2xl text-xl leading-8 text-slate-600 dark:text-slate-300">
-                I&apos;m an IT student at Pamantasan ng Cabuyao interested in
-                technology and information security. I enjoy learning how systems work
-                and exploring different areas of security while improving
-                my skills and gaining experience along the way.
+                I'm an IT student at Pamantasan ng Cabuyao focused on web and mobile application development while exploring different areas of cybersecurity.
+                I enjoy turning ideas into projects, exploring new tools and technologies, and continuously improving my skills along the way.
               </p>
 
               <div className="mt-10 border-t border-slate-200 pt-6 dark:border-[#3a302b]">
@@ -1030,10 +1027,10 @@ export default function Home() {
 
               <div className="mt-10 border-t border-slate-200 pt-6 dark:border-[#3a302b]">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
-                  Current interests
+                  What I'm Into
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {["Web Development", "Cybersecurity", "CTF", "OSINT"].map(interest => (
+                  {["Web Development", "Mobile Application Development", "Cybersecurity", "CTF", "OSINT"].map(interest => (
                     <motion.span
                       key={interest}
                       whileHover={{ scale: 1.08, y: -2 }}
