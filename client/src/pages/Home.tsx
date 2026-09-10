@@ -1360,7 +1360,7 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="border-t border-slate-200 bg-slate-100 dark:border-[#3a302b] dark:bg-[#1c1816]/60"
+          className="border-t border-slate-200 dark:border-[#3a302b]"
         >
           <div className="mx-auto flex max-w-6xl flex-col justify-between gap-10 px-5 py-20 sm:flex-row sm:items-center lg:px-8">
             <div className="max-w-md">
@@ -1427,7 +1427,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        <footer className="border-t border-slate-200 dark:border-[#3a302b]">
+        <footer className="border-t border-slate-200 bg-slate-100 dark:border-[#7c513b] dark:bg-[#1c1816]/60">
           <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-7 sm:flex-row lg:px-8">
             <span className="text-center text-xs text-slate-500 dark:text-slate-400 sm:text-left">
               © {new Date().getFullYear()} Kurt Xander Francois Imperial ·
