@@ -66,7 +66,7 @@ const projects: Project[] = [
     description:
       "A responsive website layout built to provide a consistent experience across desktop and mobile screens.",
     details:
-      "This project focused on adapting the page layout for desktop and mobile breakpoints while keeping the content clear and easy to use.",
+      "This project focused on adapting the page layout for desktop and mobile views while keeping the content clear and easy to use.",
     tags: ["HTML", "CSS"],
     color: "#2563eb",
     icon: Globe2,
@@ -87,11 +87,11 @@ const projects: Project[] = [
       "/asset/Projects/ITEW1%20-%20Responsiveness/Mobile2.png",
       "/asset/Projects/ITEW1%20-%20Responsiveness/MobileSignUp.png",
     ],
-    date: "Oct 30, 2024",
+    date: "October 2024",
     highlights: [
-      "Built as a learning project",
-      "Responsive across desktop and mobile",
-      "Created as part of coursework",
+      "Built entirely with HTML and CSS, no frameworks",
+      "Responsive layout adapts across desktop and mobile breakpoints",
+      "Used media queries to adjust structure at different screen sizes",
     ],
   },
   {
@@ -120,11 +120,11 @@ const projects: Project[] = [
       "/asset/Projects/ITEW1%20-%20UI%20Components/Screenshot%202024-11-03%20045147.png",
       "/asset/Projects/ITEW1%20-%20UI%20Components/Screenshot%202024-11-03%20045154.png",
     ],
-    date: "Nov 3, 2024",
+    date: "November 2024",
     highlights: [
-      "Built as a learning project",
-      "Focused on reusable interface patterns",
-      "Created as part of coursework",
+      "Built entirely with semantic HTML and CSS, no frameworks",
+      "Focused on reusable, consistent interface patterns",
+      "Structured components for easy reuse across pages",
     ],
   },
   {
@@ -154,11 +154,12 @@ const projects: Project[] = [
       "/asset/Projects/Student%20Attendance%20Tracker%20App/4aa6044d-648b-4aa0-82e2-1fe95c15942a.jpg",
       "/asset/Projects/Student%20Attendance%20Tracker%20App/0ae4e405-ab2f-45ba-83f1-3bf3ae267c6d.jpg",
     ],
-    date: "Jan 14, 2026",
+    date: "January 2026",
     highlights: [
-      "Built as a learning project",
-      "Designed for classroom attendance workflows",
-      "Created as part of Android coursework",
+      "Built with Kotlin and Jetpack Compose for a native Android experience",
+      "Mark students present, absent, or late with a simple tap-based interface",
+      "View attendance statistics and filter records by date",
+      "Uses Room for local data persistence, so records are available offline",
     ],
   },
   {
@@ -202,7 +203,7 @@ const projects: Project[] = [
       "/asset/Projects/JNP%20Car%20Rental/Screenshot%202025-05-12%20140439.png",
       "/asset/Projects/JNP%20Car%20Rental/Screenshot%202025-05-12%20140503.png",
     ],
-    date: "May 12, 2025",
+    date: "May 2025",
     highlights: [
       "Reservation & booking system",
       "Role-based dashboards (guest/staff/manager)",
@@ -211,12 +212,12 @@ const projects: Project[] = [
   },
   {
     number: "01",
-    type: "Group project (5 Members)",
+    type: "Group Project",
     title: "Smart Campus Companion App",
     description:
       "A mobile campus companion that brings school information, tasks, announcements, and student tools into one app.",
     details:
-      "The Smart Campus Companion is a mobile application made for students and staff. It provides dashboards, task tracking, campus information, and real-time announcements. It also includes user profiles, admin controls, Firebase cloud sync, and background reminders.",
+      "Led a 5-member team to design and build the Smart Campus Companion, a mobile app for students and staff featuring dashboards, task tracking, campus information, and real-time announcements. The app also supports user profiles, admin controls, Firebase cloud sync, and background reminders.",
     tags: ["Kotlin", "Jetpack Compose", "Room", "Firebase", "AndroidX Biometric"],
     color: "#0f766e",
     icon: Layers3,
@@ -250,21 +251,23 @@ const projects: Project[] = [
       "/asset/Projects/Smart%20Campus%20Companion%20App/1ddf8249-c684-45fd-91d2-4319bf3ebba8.jpg",
       "/asset/Projects/Smart%20Campus%20Companion%20App/7bad46f6-ebe1-4a65-885d-68fb28783b45.jpg",
     ],
-    date: "Apr 28, 2026",
+    date: "April 2026",
     highlights: [
-      "Built as a student group project",
-      "Supports student and admin workflows",
-      "Uses Kotlin, Firebase, and Jetpack Compose",
+      "Built with Kotlin and Jetpack Compose for a modern, declarative UI",
+      "Supports both student and admin workflows with role-based access",
+      "Real-time announcement system delivers staff updates instantly to students",
+      "Integrated Firebase for real-time cloud sync across devices",
+      "Added AndroidX Biometric for secure, fingerprint-based authentication",
     ],
   },
   {
     number: "02",
-    type: "Group project (5 Members)",
+    type: "Group project",
     title: "HanapAral App",
     description:
       "A mobile study companion that keeps students and staff connected through announcements, profiles, and real-time study groups.",
     details:
-      "HanapAral is a modern Android mobile application designed to help students and staff stay informed, connected, and organized in campus life. It brings together important updates, user profiles, study groups, and real-time communication in one place, with Firebase authentication, cloud sync, and optional biometric login.",
+      "Led a 5-member team to design and build HanapAral, a modern Android mobile application that helps students and staff stay informed, connected, and organized in campus life. The app brings together important updates, user profiles, study groups, and real-time communication in one place, with Firebase authentication, cloud sync, and optional biometric login.",
     tags: ["Kotlin", "Jetpack Compose", "Firebase", "AndroidX Biometric"],
     color: "#7c3aed",
     icon: Users,
@@ -286,11 +289,13 @@ const projects: Project[] = [
       "/asset/Projects/HanapAral%20App/superuser%20control.jpg",
       "/asset/Projects/HanapAral%20App/student%20profile.jpg",
     ],
-    date: "Apr 3, 2026",
+    date: "April 2026",
     highlights: [
-      "Built as a group project (5 members)",
-      "Join or create study groups in real time",
-      "Firebase auth, cloud sync, and biometric login",
+      "Built with Kotlin and Jetpack Compose for a modern, declarative UI",
+      "Enables students to join or create study groups in real time",
+      "Centralizes campus updates, announcements, and user profiles in one place",
+      "Used Firebase Cloud Firestore for real-time data sync across devices",
+      "Added AndroidX Biometric for secure, fingerprint-based authentication",
     ],
   },
 ];
