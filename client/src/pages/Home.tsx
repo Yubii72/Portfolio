@@ -1430,8 +1430,7 @@ export default function Home() {
         <footer className="border-t border-slate-200 bg-slate-100 dark:border-[#7c513b] dark:bg-[#1c1816]/60">
           <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-7 sm:flex-row lg:px-8">
             <span className="text-center text-xs text-slate-500 dark:text-slate-400 sm:text-left">
-              © {new Date().getFullYear()} Kurt Xander Francois Imperial ·
-              Cabuyao, Laguna
+              © {new Date().getFullYear()} Kurt Xander Francois Imperial · All rights reserved.
             </span>
             <p className="text-center text-xs text-slate-400 dark:text-slate-500 sm:text-right">
               Built with TypeScript, React, HTML, and CSS.
