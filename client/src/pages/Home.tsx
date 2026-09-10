@@ -1084,6 +1084,7 @@ export default function Home() {
           </div>
         </motion.section>
 
+        <LayoutGroup id="projects-and-toolkit">
         <motion.section
           id="work"
           initial={{ opacity: 0, y: 30 }}
@@ -1194,7 +1195,16 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setShowAllProjects(value => !value)}
+                onClick={() => {
+                  if (showAllProjects) {
+                    document.getElementById("work")?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }
+
+                  setShowAllProjects(value => !value);
+                }}
                 className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
               >
                 {showAllProjects ? "View less" : "View all projects"}
@@ -1209,16 +1219,21 @@ export default function Home() {
 
         <motion.section
           id="stack"
+          layout
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{
+            duration: 0.5,
+            ease: "easeOut",
+            layout: { type: "spring", stiffness: 220, damping: 26 },
+          }}
           className="border-y border-slate-200 dark:border-[#3a302b]"
         >
           <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8">
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
               <div>
-                <SectionLabel>My toolkit</SectionLabel>
+                <SectionLabel>My tools</SectionLabel>
                 <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                   What I build with.
                 </h2>
@@ -1251,6 +1266,7 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
+        </LayoutGroup>
 
         <motion.section
           id="certificates"
@@ -1308,7 +1324,16 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                onClick={() => setShowAllCertificates(value => !value)}
+                onClick={() => {
+                  if (showAllCertificates) {
+                    document.getElementById("certificates")?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }
+
+                  setShowAllCertificates(value => !value);
+                }}
                 className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
               >
                 {showAllCertificates ? "View less" : "View all certificates"}
