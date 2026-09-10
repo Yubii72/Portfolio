@@ -1372,72 +1372,67 @@ export default function Home() {
                 technology.
               </p>
             </div>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="mailto:imperialkurtxander@gmail.com"
-              className="mx-auto inline-flex w-fit items-center gap-2 rounded-lg bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
-            >
-              Say hello <Mail size={16} />
-            </motion.a>
+            <div className="flex flex-col items-center gap-5 sm:items-end">
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="mailto:imperialkurtxander@gmail.com"
+                className="inline-flex w-fit items-center gap-2 rounded-lg bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+              >
+                Say hello <Mail size={16} />
+              </motion.a>
+              <div className="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+                <a
+                  href="https://github.com/Yubii72"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                  className="hover:text-orange-600"
+                >
+                  <Github size={17} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/kurt-xander-francois-imperial-8a3b2542a/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="hover:text-orange-600"
+                >
+                  <Linkedin size={17} />
+                </a>
+                <a
+                  href="https://www.facebook.com/xander.imperial.3/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook"
+                  className="hover:text-orange-600"
+                >
+                  <Facebook size={17} />
+                </a>
+                <a
+                  href="https://www.instagram.com/kx.imp/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                  className="hover:text-orange-600"
+                >
+                  <Instagram size={17} />
+                </a>
+              </div>
+            </div>
           </div>
         </motion.section>
 
         <footer className="border-t border-slate-200 dark:border-[#3a302b]">
-          <div className="mx-auto flex max-w-6xl flex-col justify-between gap-5 px-5 py-7 sm:flex-row sm:items-center lg:px-8">
-            <span className="text-xs text-slate-500 dark:text-slate-400">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-5 py-7 sm:flex-row lg:px-8">
+            <span className="text-center text-xs text-slate-500 dark:text-slate-400 sm:text-left">
               © {new Date().getFullYear()} Kurt Xander Francois Imperial ·
               Cabuyao, Laguna
             </span>
-            <div className="flex items-center gap-4 text-slate-500 dark:text-slate-400">
-              <a
-                href="https://github.com/Yubii72"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                className="hover:text-orange-600"
-              >
-                <Github size={17} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/kurt-xander-francois-imperial-8a3b2542a/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="hover:text-orange-600"
-              >
-                <Linkedin size={17} />
-              </a>
-              <a
-                href="https://www.facebook.com/xander.imperial.3/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="hover:text-orange-600"
-              >
-                <Facebook size={17} />
-              </a>
-              <a
-                href="https://www.instagram.com/kx.imp/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="hover:text-orange-600"
-              >
-                <Instagram size={17} />
-              </a>
-              <a
-                href="mailto:imperialkurtxander@gmail.com"
-                aria-label="Email"
-                className="hover:text-orange-600"
-              >
-                <Mail size={17} />
-              </a>
-            </div>
+            <p className="text-center text-xs text-slate-400 dark:text-slate-500 sm:text-right">
+              Made with TypeScript, React, HTML, and CSS.
+            </p>
           </div>
-          <p className="pb-6 text-center text-xs text-slate-400 dark:text-slate-500">
-            Made with TypeScript, React, HTML, and CSS.
-          </p>
         </footer>
         <AnimatePresence>
           {showTop && (
