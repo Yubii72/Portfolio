@@ -16,6 +16,7 @@ import {
   Layers3,
   Linkedin,
   Mail,
+  MapPin,
   Menu,
   Sparkles,
   Terminal,
@@ -1361,62 +1362,65 @@ export default function Home() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="border-t border-slate-200 bg-slate-100 dark:border-[#3a302b] dark:bg-[#1c1816]/60"
         >
-          <div className="mx-auto flex max-w-6xl flex-col justify-between gap-8 px-5 py-20 sm:flex-row sm:items-center lg:px-8 text-center sm:text-left">
-            <div>
-              <SectionLabel>Contact</SectionLabel>
-              <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          <div className="mx-auto flex max-w-6xl flex-col justify-between gap-10 px-5 py-20 sm:flex-row sm:items-center lg:px-8">
+            <div className="max-w-md">
+              <SectionLabel>Get in touch</SectionLabel>
+              <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
                 Let&apos;s build something useful.
               </h2>
-              <p className="mt-4 max-w-md text-slate-600 dark:text-slate-300">
+              <p className="mt-4 text-slate-600 dark:text-slate-300">
                 Open to internships, collaborations, and conversations about
                 technology.
               </p>
+              <p className="mt-3 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                <MapPin
+                  size={16}
+                  className="shrink-0 text-orange-600 dark:text-orange-400"
+                />
+                Cabuyao, Laguna, Philippines
+              </p>
             </div>
-            <div className="flex flex-col items-center gap-5 sm:items-end">
+            <div className="w-full sm:w-72">
               <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 href="mailto:imperialkurtxander@gmail.com"
-                className="inline-flex w-fit items-center gap-2 rounded-lg bg-orange-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+                className="flex w-full items-center justify-center gap-2 rounded-lg bg-orange-600 px-3 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-700 sm:py-2.5"
               >
                 Say hello <Mail size={16} />
               </motion.a>
-              <div className="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-5 sm:w-72 sm:gap-2.5">
                 <a
                   href="https://github.com/Yubii72"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="GitHub"
-                  className="hover:text-orange-600"
+                  className="flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 sm:py-2 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
                 >
-                  <Github size={17} />
+                  <Github size={16} /> GitHub
                 </a>
                 <a
                   href="https://www.linkedin.com/in/kurt-xander-francois-imperial-8a3b2542a/"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="LinkedIn"
-                  className="hover:text-orange-600"
+                  className="flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 sm:py-2 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
                 >
-                  <Linkedin size={17} />
+                  <Linkedin size={16} /> LinkedIn
                 </a>
                 <a
                   href="https://www.facebook.com/xander.imperial.3/"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Facebook"
-                  className="hover:text-orange-600"
+                  className="flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 sm:py-2 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
                 >
-                  <Facebook size={17} />
+                  <Facebook size={16} /> Facebook
                 </a>
                 <a
                   href="https://www.instagram.com/kx.imp/"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Instagram"
-                  className="hover:text-orange-600"
+                  className="flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 sm:py-2 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
                 >
-                  <Instagram size={17} />
+                  <Instagram size={16} /> Instagram
                 </a>
               </div>
             </div>
@@ -1430,7 +1434,7 @@ export default function Home() {
               Cabuyao, Laguna
             </span>
             <p className="text-center text-xs text-slate-400 dark:text-slate-500 sm:text-right">
-              Made with TypeScript, React, HTML, and CSS.
+              Built with TypeScript, React, HTML, and CSS.
             </p>
           </div>
         </footer>
