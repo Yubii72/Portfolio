@@ -742,19 +742,19 @@ export default function Home() {
               className="flex items-center gap-2.5 text-left"
               aria-label="Back to home"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
-                KX
-              </span>
-              {/* <span className="text-sm font-semibold tracking-tight">
-                Kurt Xander Francois Imperial
+              {/* <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-sm font-bold text-white dark:bg-white dark:text-slate-950">
+                KXI
               </span> */}
+              <span className="text-sm font-semibold tracking-tight">
+                Kurt Xander Francois Imperial
+              </span>
             </button>
             <div className="hidden items-center gap-7 md:flex">
               {[
                 ["About", "about"],
                 ["Education", "education"],
                 ["Projects", "work"],
-                ["Stack", "stack"],
+                ["Tools", "stack"],
                 ["Certificates", "certificates"],
                 ["Contact", "contact"],
               ].map(([label, id]) => (
@@ -1027,7 +1027,7 @@ export default function Home() {
                   <li>Messing around with systems, networks, and vulnerabilities.</li>
                   <li>I keep a bootable Kali Linux USB around for troubleshooting and experimenting.</li>
                   <li>I enjoy solving CTF rooms on TryHackMe and figuring out how things work.</li>
-                  <li>I also play osu!, League of Legends, and Mobile Legends when I have nothing better to do.</li>
+                  {/* <li>I also play osu!, League of Legends, and Mobile Legends when I have nothing better to do.</li> */}
                 </ul>
               </div>
 
