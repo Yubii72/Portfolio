@@ -893,7 +893,7 @@ export default function Home() {
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                     Based in
                   </p>
-                  <p className="mt-1 text-sm font-medium">Cabuyao, Laguna</p>
+                  <p className="mt-1 text-sm font-medium">Laguna, Philippines</p>
                 </div>
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
