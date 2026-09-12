@@ -371,7 +371,7 @@ const certificates: Certificate[] = [
       "Completed foundational cybersecurity training through Cisco Networking Academy offered by DICT.",
     skills: ["Cybersecurity", "Threat Detection"],
     verify:
-      "https://www.credly.com/earner/earned/badge/ab4d5572-82bb-4002-96e9-e0ffb85edb7f",
+      "https://www.credly.com/badges/ab4d5572-82bb-4002-96e9-e0ffb85edb7f",
     visual: "Introduction to Cybersecurity certificate",
     asset: "/asset/Certificates/intro%20to%20cyber.png",
   },
@@ -390,7 +390,7 @@ const certificates: Certificate[] = [
       "Security Controls",
     ],
     verify:
-      "https://www.credly.com/earner/earned/badge/6807ee44-c969-487f-ba69-d5f95d186e02",
+      "https://www.credly.com/badges/6807ee44-c969-487f-ba69-d5f95d186e02",
     visual: "Cyber Threat Management certificate",
     asset: "/asset/Certificates/cyber%20threat.png",
   },
@@ -402,7 +402,7 @@ const certificates: Certificate[] = [
       "Completed foundational training for customer-focused technical support.",
     skills: ["Customer Service", "Communication", "Remote Troubleshooting"],
     verify:
-      "https://www.credly.com/earner/earned/badge/c6ff76bc-37a0-4d03-a109-85a0fed3ca77",
+      "https://www.credly.com/badges/c6ff76bc-37a0-4d03-a109-85a0fed3ca77",
     visual: "IT Customer Support Basics certificate",
     asset: "/asset/Certificates/it%20support.png",
   },
@@ -414,7 +414,7 @@ const certificates: Certificate[] = [
       "Completed training in supporting common operating system environments.",
     skills: ["Customer Service", "Software Installation"],
     verify:
-      "https://www.credly.com/earner/earned/badge/08924061-985e-4ffd-ae53-831d6b77bc1b",
+      "https://www.credly.com/badges/08924061-985e-4ffd-ae53-831d6b77bc1b",
     visual: "Operating Systems Support certificate",
     asset: "/asset/Certificates/os%20support.png",
   },
@@ -450,7 +450,7 @@ const certificates: Certificate[] = [
       "Completed IBM's Cybersecurity Fundamentals training covering core security principles, threat detection, and incident response.",
     skills: ["Cryptography", "Cybersecurity", "Incident Response", "Threat Detection", "Social Engineering", "Vulnerability Management"],
     verify:
-      "https://www.credly.com/earner/earned/badge/ebde17fc-c472-480f-bea4-dfa4b905ac6f",
+      "https://www.credly.com/badges/ebde17fc-c472-480f-bea4-dfa4b905ac6f",
     visual: "IBM Cybersecurity Fundamentals certificate",
     asset: "/asset/Certificates/cybersecurity fundamentals.png",
   },
