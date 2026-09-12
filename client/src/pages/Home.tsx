@@ -438,7 +438,7 @@ const certificates: Certificate[] = [
       "Attended a cybersecurity webinar focused on Azure and artificial intelligence.",
     skills: ["Microsoft Azure", "Artificial Intelligence (AI)"],
     verify:
-      "https://www.credly.com/earner/earned/badge/ebde17fc-c472-480f-bea4-dfa4b905ac6f",
+      "https://credsverse.com/credentials/37198e3c-a07b-49a0-b8d6-b3360e25cd14?preview=1",
     visual: "BlackStride Cyber certificate",
     asset: "/asset/Certificates/ai%20azure.png",
   },
