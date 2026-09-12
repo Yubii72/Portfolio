@@ -925,7 +925,7 @@ export default function Home() {
                 <motion.a
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://www.linkedin.com/in/kurt-xander-francois-imperial-8a3b2542a/"
+                  href="https://www.linkedin.com/in/kurtxanderimperial/"
                   target="_blank"
                   rel="noreferrer"
                   className="social-chip"
@@ -1399,7 +1399,7 @@ export default function Home() {
                   <Github size={16} /> GitHub
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/kurt-xander-francois-imperial-8a3b2542a/"
+                  href="https://www.linkedin.com/in/kurtxanderimperial/"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-orange-500 hover:text-orange-600 sm:py-2 dark:border-[#4a3b34] dark:text-slate-200 dark:hover:border-orange-400 dark:hover:text-orange-400"
