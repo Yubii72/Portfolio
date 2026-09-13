@@ -965,7 +965,7 @@ export default function Home() {
                   Get in touch
                 </motion.button>
               </div>
-              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-5 border-t border-slate-200 pt-6 dark:border-[#3a302b] sm:grid-cols-4">
+              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-5 border-t border-slate-200 pt-6 dark:border-[#3a302b] sm:flex sm:flex-wrap sm:gap-x-10">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                     Based in
@@ -976,21 +976,15 @@ export default function Home() {
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                     Studying at
                   </p>
-                  <p className="mt-1 text-sm font-medium">
+                  <p className="mt-1 whitespace-nowrap text-sm font-medium">
                     University of Cabuyao
                   </p>
                 </div>
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                    Focus
-                  </p>
-                  <p className="mt-1 text-sm font-medium">IT · Cybersecurity</p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                     Email
                   </p>
-                  <p className="mt-1 break-all text-sm font-medium">
+                  <p className="mt-1 whitespace-nowrap text-sm font-medium">
                     imperialkurtxander@gmail.com
                   </p>
                 </div>
