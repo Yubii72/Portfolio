@@ -18,6 +18,7 @@ import {
   Mail,
   MapPin,
   Menu,
+  ShieldAlert,
   Sparkles,
   Terminal,
   Users,
@@ -41,6 +42,7 @@ type Project = {
   repoPrivate?: boolean;
   visual: string;
   slides: string[];
+  thumbnail?: string;
   images?: string[];
   mobileImage?: string;
   thumbnailIndex?: number;
@@ -88,7 +90,7 @@ const projects: Project[] = [
       "/asset/Projects/ITEW1%20-%20Responsiveness/Mobile2.png",
       "/asset/Projects/ITEW1%20-%20Responsiveness/MobileSignUp.png",
     ],
-    date: "October 2024",
+    date: "Oct 2024",
     highlights: [
       "Built entirely with HTML and CSS, no frameworks",
       "Responsive layout adapts across desktop and mobile breakpoints",
@@ -121,7 +123,7 @@ const projects: Project[] = [
       "/asset/Projects/ITEW1%20-%20UI%20Components/Screenshot%202024-11-03%20045147.png",
       "/asset/Projects/ITEW1%20-%20UI%20Components/Screenshot%202024-11-03%20045154.png",
     ],
-    date: "November 2024",
+    date: "Nov 2024",
     highlights: [
       "Built entirely with semantic HTML and CSS, no frameworks",
       "Focused on reusable, consistent interface patterns",
@@ -141,6 +143,7 @@ const projects: Project[] = [
     icon: Check,
     repo: "https://github.com/Yubii72/Student-Attendance-Tracker-App/tree/main",
     visual: "Student Attendance Tracker",
+    thumbnail: "/asset/Projects/Student%20Attendance%20Tracker%20App/thumbnail.png",
     slides: [
       "Class list",
       "Class options",
@@ -155,7 +158,7 @@ const projects: Project[] = [
       "/asset/Projects/Student%20Attendance%20Tracker%20App/4aa6044d-648b-4aa0-82e2-1fe95c15942a.jpg",
       "/asset/Projects/Student%20Attendance%20Tracker%20App/0ae4e405-ab2f-45ba-83f1-3bf3ae267c6d.jpg",
     ],
-    date: "January 2026",
+    date: "Jan 2026",
     highlights: [
       "Built with Kotlin and Jetpack Compose for a native Android experience",
       "Mark students present, absent, or late with a simple tap-based interface",
@@ -224,6 +227,7 @@ const projects: Project[] = [
     icon: Layers3,
     repo: "https://github.com/Yubii72/Smart-Campus-Companion-App",
     visual: "Smart Campus Companion",
+    thumbnail: "/asset/Projects/Smart%20Campus%20Companion%20App/thumbnail.png",
     slides: [
       "App Splash Screen",
       "Student Login",
@@ -252,7 +256,7 @@ const projects: Project[] = [
       "/asset/Projects/Smart%20Campus%20Companion%20App/1ddf8249-c684-45fd-91d2-4319bf3ebba8.jpg",
       "/asset/Projects/Smart%20Campus%20Companion%20App/7bad46f6-ebe1-4a65-885d-68fb28783b45.jpg",
     ],
-    date: "April 2026",
+    date: "Apr 2026",
     highlights: [
       "Built with Kotlin and Jetpack Compose for a modern, declarative UI",
       "Supports both student and admin workflows with role-based access",
@@ -274,6 +278,7 @@ const projects: Project[] = [
     icon: Users,
     repoPrivate: true,
     visual: "HanapAral App",
+    thumbnail: "/asset/Projects/HanapAral%20App/thumbnail.png",
     slides: [
       "Login page",
       "My Groups",
@@ -290,13 +295,49 @@ const projects: Project[] = [
       "/asset/Projects/HanapAral%20App/superuser%20control.jpg",
       "/asset/Projects/HanapAral%20App/student%20profile.jpg",
     ],
-    date: "April 2026",
+    date: "Apr 2026",
     highlights: [
       "Built with Kotlin and Jetpack Compose for a modern, declarative UI",
       "Enables students to join or create study groups in real time",
       "Centralizes campus updates, announcements, and user profiles in one place",
       "Used Firebase Cloud Firestore for real-time data sync across devices",
       "Added AndroidX Biometric for secure, fingerprint-based authentication",
+    ],
+  },
+  {
+    number: "01",
+    type: "Personal Project",
+    title: "PhishLens Detector",
+    description:
+      "A phishing email detector that scans raw email source or .eml files and scores the risk before you click anything.",
+    details:
+      "PhishLens Detector is a web app I built to catch phishing emails before anything gets clicked. You can paste raw email source or upload a .eml file, and it returns a risk score, a breakdown of the signals it found, and an annotated view of the suspicious parts in the message. Styled as a clean, dark navy/teal/amber workspace built with React and TypeScript.",
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Vitest"],
+    color: "#0d9488",
+    icon: ShieldAlert,
+    repo: "https://github.com/Yubii72/PhishLens-Detector",
+    visual: "PhishLens Detector",
+    slides: [
+      "Scan Dashboard",
+      "Scan Results",
+      "Scan History",
+      "Scan Compare Results",
+      "About Page",
+    ],
+    images: [
+      "/asset/Projects/PhishLens/Dashboard.png",
+      "/asset/Projects/PhishLens/Scan%20Results.png",
+      "/asset/Projects/PhishLens/Scan%20History.png",
+      "/asset/Projects/PhishLens/Scan%20Compare%20Results.png",
+      "/asset/Projects/PhishLens/About.png",
+    ],
+    date: "Sep 2026",
+    highlights: [
+      "Paste raw email source or upload a .eml file for analysis",
+      "0-100 risk score with Likely Safe / Suspicious / Likely Phishing verdicts",
+      "Heuristic engine detects brand lookalikes, urgency wording, and risky links",
+      "Annotated preview highlights suspicious parts before you click",
+      "Scan history saved locally in the browser with side-by-side comparisons",
     ],
   },
 ];
@@ -527,7 +568,7 @@ function ProjectVisual({
   project: Project;
   className?: string;
 }) {
-  const image = project.images?.[project.thumbnailIndex ?? 0];
+  const image = project.thumbnail ?? project.images?.[project.thumbnailIndex ?? 0];
 
   return image ? (
     <picture>
@@ -717,6 +758,7 @@ export default function Home() {
     });
 
   const orderedProjects = [
+    projects[6],
     projects[4],
     projects[5],
     projects[2],
