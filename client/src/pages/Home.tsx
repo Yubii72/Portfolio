@@ -977,7 +977,7 @@ export default function Home() {
                     Studying at
                   </p>
                   <p className="mt-1 text-sm font-medium">
-                    Pamantasan ng Cabuyao
+                    University of Cabuyao
                   </p>
                 </div>
                 <div>
@@ -1090,7 +1090,7 @@ export default function Home() {
             </div>
             <div>
               <p className="max-w-2xl text-xl leading-8 text-slate-600 dark:text-slate-300">
-                I'm an IT student at Pamantasan ng Cabuyao focused on web and mobile application development while exploring different areas of cybersecurity.
+                I'm an IT student at University of Cabuyao focused on web and mobile application development while exploring different areas of cybersecurity.
                 I enjoy turning ideas into projects, exploring new tools and technologies, and continuously improving my skills along the way.
               </p>
 
@@ -1146,7 +1146,7 @@ export default function Home() {
             </div>
             <div className="education-list">
               {[
-                { year: "2023 — present", title: "Pamantasan ng Cabuyao", desc: "BS Information Technology" },
+                { year: "2023 — present", title: "University of Cabuyao", desc: "BS Information Technology" },
                 { year: "2021 — 2023", title: "IFL Christian Academy, Inc.", desc: "STEM · Senior High School" },
                 { year: "2016 — 2021", title: "Holy Redeemer School of San Isidro", desc: "Junior High School" },
               ].map(item => (
