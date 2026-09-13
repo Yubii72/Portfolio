@@ -424,7 +424,7 @@ const certificates: Certificate[] = [
     issuer: "TryHackMe",
     description:
       "Participated in the Hacker Holidays cybersecurity learning event.",
-    skills: ["Penetration Testing", "Cybersecurity"],
+    skills: ["CTF", "OSINT"],
     verify:
       "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-XBJ4ZX4LFP.pdf",
     visual: "Hacker Holidays certificate",
