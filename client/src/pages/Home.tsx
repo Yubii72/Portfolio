@@ -213,7 +213,7 @@ const projects: Project[] = [
   },
   {
     number: "01",
-    type: "Group Project",
+    type: "Tech Lead",
     title: "Smart Campus Companion App",
     description:
       "A mobile campus companion that brings school information, tasks, announcements, and student tools into one app.",
@@ -263,7 +263,7 @@ const projects: Project[] = [
   },
   {
     number: "02",
-    type: "Group project",
+    type: "Tech Lead",
     title: "HanapAral App",
     description:
       "A mobile study companion that keeps students and staff connected through announcements, profiles, and real-time study groups.",
