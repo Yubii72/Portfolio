@@ -43,6 +43,7 @@ type Project = {
   visual: string;
   slides: string[];
   thumbnail?: string;
+  thumbnailZoom?: number;
   images?: string[];
   mobileImage?: string;
   thumbnailIndex?: number;
@@ -74,6 +75,7 @@ const projects: Project[] = [
     color: "#2563eb",
     icon: Globe2,
     visual: "Responsive website",
+    thumbnailZoom: 1.15,
     slides: [
       "Desktop Signup Page",
       "Desktop Dashboard",
@@ -179,6 +181,7 @@ const projects: Project[] = [
     icon: Globe2,
     repo: "https://github.com/Yubii72/JNP-Car-Rental",
     visual: "JNP Car Rental",
+    thumbnailZoom: 1.15,
     slides: [
       "Sign In / Register Page",
       "Login",
@@ -279,6 +282,7 @@ const projects: Project[] = [
     repoPrivate: true,
     visual: "HanapAral App",
     thumbnail: "/asset/Projects/HanapAral%20App/thumbnail.png",
+    thumbnailZoom: 1.15,
     slides: [
       "Login page",
       "My Groups",
@@ -317,6 +321,7 @@ const projects: Project[] = [
     icon: ShieldAlert,
     repo: "https://github.com/Yubii72/PhishLens-Detector",
     visual: "PhishLens Detector",
+    thumbnailZoom: 1.15,
     slides: [
       "Scan Dashboard",
       "Scan Results",
@@ -570,19 +575,38 @@ function ProjectVisual({
 }) {
   const image = project.thumbnail ?? project.images?.[project.thumbnailIndex ?? 0];
 
-  return image ? (
+  if (!image) {
+    return <VisualPlaceholder label={project.visual} className={className} />;
+  }
+
+  const source = project.mobileImage ? (
+    <source media="(max-width: 767px)" srcSet={project.mobileImage} />
+  ) : null;
+
+  if (project.thumbnailZoom) {
+    return (
+      <picture>
+        {source}
+        <span className={`project-visual-zoom ${className}`}>
+          <img
+            src={image}
+            alt={project.visual}
+            style={{ transform: `scale(${project.thumbnailZoom})` }}
+          />
+        </span>
+      </picture>
+    );
+  }
+
+  return (
     <picture>
-      {project.mobileImage ? (
-        <source media="(max-width: 767px)" srcSet={project.mobileImage} />
-      ) : null}
+      {source}
       <img
         src={image}
         alt={project.visual}
         className={`project-visual ${className}`}
       />
     </picture>
-  ) : (
-    <VisualPlaceholder label={project.visual} className={className} />
   );
 }
 
@@ -803,7 +827,7 @@ export default function Home() {
                 <button
                   key={id}
                   onClick={() => navigate(id)}
-                  className="text-sm text-slate-500 transition-colors hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
+                  className="text-sm text-slate-500 transition-colors hover:text-orange-600 dark:text-slate-400 dark:hover:text-orange-400"
                 >
                   {label}
                 </button>
@@ -849,37 +873,37 @@ export default function Home() {
                   <div className="mx-auto flex max-w-6xl flex-col gap-3">
                     <button
                       onClick={() => navigate("about")}
-                      className="py-2 text-left text-sm"
+                      className="py-2 text-left text-sm transition-colors hover:text-orange-600 dark:hover:text-orange-400"
                     >
                       About
                     </button>
                     <button
                       onClick={() => navigate("education")}
-                      className="py-2 text-left text-sm"
+                      className="py-2 text-left text-sm transition-colors hover:text-orange-600 dark:hover:text-orange-400"
                     >
                       Education
                     </button>
                     <button
                       onClick={() => navigate("work")}
-                      className="py-2 text-left text-sm"
+                      className="py-2 text-left text-sm transition-colors hover:text-orange-600 dark:hover:text-orange-400"
                     >
                       Projects
                     </button>
                     <button
                       onClick={() => navigate("stack")}
-                      className="py-2 text-left text-sm"
+                      className="py-2 text-left text-sm transition-colors hover:text-orange-600 dark:hover:text-orange-400"
                     >
                       Stack
                     </button>
                     <button
                       onClick={() => navigate("certificates")}
-                      className="py-2 text-left text-sm"
+                      className="py-2 text-left text-sm transition-colors hover:text-orange-600 dark:hover:text-orange-400"
                     >
                       Certificates
                     </button>
                     <button
                       onClick={() => navigate("contact")}
-                      className="py-2 text-left text-sm"
+                      className="py-2 text-left text-sm transition-colors hover:text-orange-600 dark:hover:text-orange-400"
                     >
                       Contact
                     </button>
