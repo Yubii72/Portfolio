@@ -218,13 +218,8 @@ const projects: Project[] = [
     ],
   },
   {
-<<<<<<< HEAD
-    number: "02",
-    type: "Group Project",
-=======
     number: "01",
     type: "Tech Lead",
->>>>>>> 6479a1c11e2966a901d144323f66aac717417e44
     title: "Smart Campus Companion App",
     description:
       "A mobile campus companion that brings school information, tasks, announcements, and student tools into one app.",
@@ -274,13 +269,8 @@ const projects: Project[] = [
     ],
   },
   {
-<<<<<<< HEAD
-    number: "03",
-    type: "Group project",
-=======
     number: "02",
     type: "Tech Lead",
->>>>>>> 6479a1c11e2966a901d144323f66aac717417e44
     title: "HanapAral App",
     description:
       "A mobile study companion that keeps students and staff connected through announcements, profiles, and real-time study groups.",
@@ -325,7 +315,7 @@ const projects: Project[] = [
     description:
       "A phishing email detector that scans raw email source or .eml files and scores the risk before you click anything.",
     details:
-      "PhishLens Detector is a web app I built to catch phishing emails before anything gets clicked. You can paste raw email source or upload a .eml file, and it returns a risk score, a breakdown of the signals it found, and an annotated view of the suspicious parts in the message. Styled as a clean, dark navy/teal/amber workspace built with React and TypeScript.",
+      "PhishLens Detector is a web app to catch phishing emails before anything gets clicked. Paste raw email source or upload a .eml file, and it returns a risk score, a breakdown of the signals it found, and an annotated view of the suspicious parts in the message.",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Vitest"],
     color: "#0d9488",
     icon: ShieldAlert,
