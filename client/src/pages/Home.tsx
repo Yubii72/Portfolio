@@ -218,8 +218,13 @@ const projects: Project[] = [
     ],
   },
   {
+<<<<<<< HEAD
     number: "02",
     type: "Group Project",
+=======
+    number: "01",
+    type: "Tech Lead",
+>>>>>>> 6479a1c11e2966a901d144323f66aac717417e44
     title: "Smart Campus Companion App",
     description:
       "A mobile campus companion that brings school information, tasks, announcements, and student tools into one app.",
@@ -269,8 +274,13 @@ const projects: Project[] = [
     ],
   },
   {
+<<<<<<< HEAD
     number: "03",
     type: "Group project",
+=======
+    number: "02",
+    type: "Tech Lead",
+>>>>>>> 6479a1c11e2966a901d144323f66aac717417e44
     title: "HanapAral App",
     description:
       "A mobile study companion that keeps students and staff connected through announcements, profiles, and real-time study groups.",
@@ -470,7 +480,7 @@ const certificates: Certificate[] = [
     issuer: "TryHackMe",
     description:
       "Participated in the Hacker Holidays cybersecurity learning event.",
-    skills: ["Penetration Testing", "Cybersecurity"],
+    skills: ["CTF", "OSINT"],
     verify:
       "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-XBJ4ZX4LFP.pdf",
     visual: "Hacker Holidays certificate",
