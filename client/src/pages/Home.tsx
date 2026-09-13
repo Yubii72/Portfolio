@@ -945,7 +945,7 @@ export default function Home() {
                 <span className="text-orange-600 dark:text-orange-400">.</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                IT student building web and mobile apps, with cybersecurity as the newest thing I'm into.
+                IT student focused on web and mobile app development, with cybersecurity as my latest interest.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <motion.button
