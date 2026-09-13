@@ -64,7 +64,7 @@ type Certificate = {
 
 const projects: Project[] = [
   {
-    number: "06",
+    number: "07",
     type: "Individual Project",
     title: "ITEW1 - Responsiveness",
     description:
@@ -100,7 +100,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "05",
+    number: "06",
     type: "Individual Project",
     title: "ITEW1 - UI Components",
     description:
@@ -133,7 +133,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "03",
+    number: "04",
     type: "Individual Project",
     title: "Student Attendance Tracker App",
     description:
@@ -169,7 +169,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "04",
+    number: "05",
     type: "Individual Project",
     title: "JNP Car Rental",
     description:
@@ -218,7 +218,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "01",
+    number: "02",
     type: "Group Project",
     title: "Smart Campus Companion App",
     description:
@@ -269,7 +269,7 @@ const projects: Project[] = [
     ],
   },
   {
-    number: "02",
+    number: "03",
     type: "Group project",
     title: "HanapAral App",
     description:
