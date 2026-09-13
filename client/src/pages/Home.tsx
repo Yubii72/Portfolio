@@ -44,6 +44,7 @@ type Project = {
   slides: string[];
   thumbnail?: string;
   thumbnailZoom?: number;
+  thumbnailZoomMobile?: boolean;
   images?: string[];
   mobileImage?: string;
   thumbnailIndex?: number;
@@ -146,6 +147,7 @@ const projects: Project[] = [
     repo: "https://github.com/Yubii72/Student-Attendance-Tracker-App/tree/main",
     visual: "Student Attendance Tracker",
     thumbnail: "/asset/Projects/Student%20Attendance%20Tracker%20App/thumbnail.png",
+    thumbnailZoomMobile: true,
     slides: [
       "Class list",
       "Class options",
@@ -231,6 +233,7 @@ const projects: Project[] = [
     repo: "https://github.com/Yubii72/Smart-Campus-Companion-App",
     visual: "Smart Campus Companion",
     thumbnail: "/asset/Projects/Smart%20Campus%20Companion%20App/thumbnail.png",
+    thumbnailZoomMobile: true,
     slides: [
       "App Splash Screen",
       "Student Login",
@@ -583,15 +586,23 @@ function ProjectVisual({
     <source media="(max-width: 767px)" srcSet={project.mobileImage} />
   ) : null;
 
-  if (project.thumbnailZoom) {
+  if (project.thumbnailZoom || project.thumbnailZoomMobile) {
     return (
       <picture>
         {source}
-        <span className={`project-visual-zoom ${className}`}>
+        <span
+          className={`project-visual-zoom ${className}${
+            project.thumbnailZoomMobile ? " project-visual-zoom-mobile" : ""
+          }`}
+        >
           <img
             src={image}
             alt={project.visual}
-            style={{ transform: `scale(${project.thumbnailZoom})` }}
+            style={
+              project.thumbnailZoom
+                ? { transform: `scale(${project.thumbnailZoom})` }
+                : undefined
+            }
           />
         </span>
       </picture>

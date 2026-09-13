@@ -413,6 +413,12 @@ iframe.certificate-visual {
   object-fit: contain;
 }
 
+@media (max-width: 767px) {
+  .project-visual-zoom-mobile img {
+    transform: scale(1.2);
+  }
+}
+
 .project-modal-visual {
   max-height: 50vh;
   object-fit: contain;
