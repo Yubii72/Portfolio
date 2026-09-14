@@ -1462,7 +1462,7 @@ export default function Home() {
                   size={16}
                   className="shrink-0 text-orange-600 dark:text-orange-400"
                 />
-                Cabuyao, Laguna, Philippines
+                Laguna, Philippines
               </p>
             </div>
             <div className="w-full sm:w-72">
