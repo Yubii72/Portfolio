@@ -473,7 +473,7 @@ const certificates: Certificate[] = [
     issuer: "TryHackMe",
     description:
       "Participated in the Hacker Holidays cybersecurity learning event.",
-    skills: ["CTF", "OSINT"],
+    skills: ["Capture the Flag (CTF)", "Open-Source Intelligence (OSINT)"],
     verify:
       "https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-XBJ4ZX4LFP.pdf",
     visual: "Hacker Holidays certificate",
@@ -1121,7 +1121,7 @@ export default function Home() {
                   What I'm Into
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {["Web Development", "Mobile Application Development", "Cybersecurity", "CTF", "OSINT"].map(interest => (
+                  {["Web Development", "Mobile Application Development", "Cybersecurity", "Capture the Flag (CTF)", "Open-Source Intelligence (OSINT)"].map(interest => (
                     <motion.span
                       key={interest}
                       whileHover={{ scale: 1.08, y: -2 }}
