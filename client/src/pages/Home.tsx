@@ -689,9 +689,16 @@ function DetailModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-5 flex items-start justify-between gap-4 sm:hidden">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-orange-600 dark:text-orange-400">
-            {eyebrow.split(" · ").map((part, i) => (
-              <span key={i} className="block">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+            {eyebrow.split(" · ").map((part, i, arr) => (
+              <span
+                key={i}
+                className={`block${
+                  i === arr.length - 1
+                    ? " text-orange-600 dark:text-orange-400"
+                    : ""
+                }`}
+              >
                 {part}
               </span>
             ))}
@@ -706,9 +713,16 @@ function DetailModal({
         </div>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="w-full">
-            <p className="mb-2 hidden text-xs font-semibold uppercase tracking-[0.16em] text-orange-600 dark:text-orange-400 sm:block">
-              {eyebrow.split(" · ").map((part, i) => (
-                <span key={i} className="block">
+            <p className="mb-2 hidden text-xs font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400 sm:block">
+              {eyebrow.split(" · ").map((part, i, arr) => (
+                <span
+                  key={i}
+                  className={`block${
+                    i === arr.length - 1
+                      ? " text-orange-600 dark:text-orange-400"
+                      : ""
+                  }`}
+                >
                   {part}
                 </span>
               ))}
