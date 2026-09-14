@@ -959,7 +959,7 @@ export default function Home() {
                 <span className="text-orange-600 dark:text-orange-400">.</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                IT student focused on web and mobile app development, with cybersecurity as my latest interest.
+                IT student based in Laguna, Philippines, focused on web and mobile app development and exploring the field of cybersecurity.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <motion.button
@@ -979,34 +979,18 @@ export default function Home() {
                   Get in touch
                 </motion.button>
               </div>
-              <div className="mt-10 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-5 border-t border-slate-200 pt-6 dark:border-[#3a302b] sm:flex sm:flex-wrap sm:gap-x-10">
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                    Based in
-                  </p>
-                  <p className="mt-1 text-sm font-medium">Laguna, Philippines</p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                    Studying at
-                  </p>
-                  <p className="mt-1 whitespace-nowrap text-sm font-medium">
-                    University of Cabuyao
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                    Email
-                  </p>
-                  <p className="mt-1 whitespace-nowrap text-sm font-medium">
-                    imperialkurtxander@gmail.com
-                  </p>
-                </div>
-              </div>
-              <div className="mt-6 flex flex-wrap items-center gap-2">
+              <div className="mt-10 flex flex-wrap items-center gap-2 border-t border-slate-200 pt-6 dark:border-[#3a302b]">
                 <span className="mr-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
                   Socials
                 </span>
+                <motion.a
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="mailto:imperialkurtxander@gmail.com"
+                  className="social-chip"
+                >
+                  <Mail size={14} /> Email
+                </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -1107,12 +1091,11 @@ export default function Home() {
                   Some things about me
                 </p>
                 <ul className="mt-4 list-disc space-y-2.5 pl-5 text-[15px] text-slate-600 dark:text-slate-300 marker:text-orange-600 dark:marker:text-orange-400">
+                  <li>Building and developing web and mobile applications.</li>
                   <li>Daily driving Fedora Linux and Windows 11 in a dual-boot setup.</li>
                   <li>Running crDroid 11.2 on a rooted Xiaomi phone with an unlocked bootloader.</li>
-                  <li>Messing around with systems, networks, and vulnerabilities.</li>
-                  <li>I keep a bootable Kali Linux USB around for troubleshooting and experimenting.</li>
-                  <li>I enjoy solving CTF rooms on TryHackMe and figuring out how things work.</li>
-                  {/* <li>I also play osu!, League of Legends, and Mobile Legends when I have nothing better to do.</li> */}
+                  <li>Keeping a bootable Kali Linux USB around for troubleshooting and experimenting.</li>
+                  <li>Solving CTF challenges on TryHackMe and learning new techniques.</li>
                 </ul>
               </div>
 
