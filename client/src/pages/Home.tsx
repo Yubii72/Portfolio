@@ -624,24 +624,24 @@ function ProjectVisual({
 function CertificateVisual({
   certificate,
   className = "",
+  onExpand,
 }: {
   certificate: Certificate;
   className?: string;
+  onExpand: (src: string) => void;
 }) {
   return (
-    <a
-      href={certificate.asset}
-      target="_blank"
-      rel="noreferrer"
-      className="certificate-preview-link"
-      aria-label={`Open ${certificate.visual} at full size`}
+    <button
+      onClick={() => onExpand(certificate.asset)}
+      className="block w-full cursor-zoom-in"
+      aria-label={`Open ${certificate.visual} full screen`}
     >
       <img
         src={certificate.asset}
         alt={certificate.visual}
         className={`certificate-visual ${className}`}
       />
-    </a>
+    </button>
   );
 }
 
@@ -774,6 +774,7 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [projectSlide, setProjectSlide] = useState(0);
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showAllCertificates, setShowAllCertificates] = useState(false);
   const [showTop, setShowTop] = useState(false);
@@ -1539,19 +1540,19 @@ export default function Home() {
             actionHref={selectedProject.repo}
           >
             {selectedProject.images ? (
-              <a
-                href={selectedProject.images[projectSlide]}
-                target="_blank"
-                rel="noreferrer"
-                className="project-preview-link"
-                aria-label={`Open ${selectedProject.slides[projectSlide]} at full size`}
+              <button
+                onClick={() =>
+                    setExpandedImage(selectedProject!.images![projectSlide])
+                  }
+                className="block w-full cursor-zoom-in"
+                aria-label={`Open ${selectedProject.slides[projectSlide]} full screen`}
               >
                 <img
                   src={selectedProject.images[projectSlide]}
                   alt={`${selectedProject.visual} · ${selectedProject.slides[projectSlide]}`}
                   className="project-modal-visual h-[68vh]"
                 />
-              </a>
+              </button>
             ) : (
               <VisualPlaceholder
                 label={`${selectedProject.visual} · ${selectedProject.slides[projectSlide]}`}
@@ -1630,6 +1631,7 @@ export default function Home() {
             <CertificateVisual
               certificate={selectedCertificate}
               className="h-[50vh]"
+              onExpand={setExpandedImage}
             />
             <p className="mt-6">{selectedCertificate.description}</p>
             <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-orange-600 dark:text-orange-400">
@@ -1643,6 +1645,33 @@ export default function Home() {
               ))}
             </ul>
           </DetailModal>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {expandedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-[80] flex cursor-zoom-out items-center justify-center bg-black/90 p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Expanded image"
+            onClick={() => setExpandedImage(null)}
+          >
+            <motion.img
+              key={expandedImage}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              src={expandedImage}
+              alt="Expanded image"
+              className="max-h-full max-w-full rounded-lg object-contain shadow-2xl"
+            />
+          </motion.div>
         )}
       </AnimatePresence>
     </main>
