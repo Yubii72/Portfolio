@@ -648,7 +648,12 @@ function CertificateVisual({
 function ProfileVisual({ className = "" }: { className?: string }) {
   return (
     <div className={`profile-visual ${className}`}>
-      <img src="/asset/profile1.jpg" alt="Kurt Xander Francois Imperial" />
+      <img
+        src="/asset/profile1.jpg"
+        alt="Kurt Xander Francois Imperial"
+        draggable={false}
+        onContextMenu={e => e.preventDefault()}
+      />
     </div>
   );
 }
